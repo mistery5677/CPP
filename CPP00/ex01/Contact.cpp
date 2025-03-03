@@ -6,7 +6,7 @@
 /*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 11:15:17 by miafonso          #+#    #+#             */
-/*   Updated: 2025/03/03 13:14:01 by miafonso         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:11:07 by miafonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ bool Contact::setContact()
 
     std::cout << "Nickname: ";
     std::getline(std::cin, tempNickName);
-    if (!check_str(tempNickName))
-        return false;
 
     std::cout << "Phone Number: ";
     std::getline(std::cin, tempPhoneNumber);

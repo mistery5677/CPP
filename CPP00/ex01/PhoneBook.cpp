@@ -6,7 +6,7 @@
 /*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 11:24:42 by miafonso          #+#    #+#             */
-/*   Updated: 2025/03/03 13:24:09 by miafonso         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:24:45 by miafonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,13 @@ void PhoneBook::findContact()
 		std::cout << "Empty contacts list" << std::endl;
 		return ;
 	}
-	std::cin >> index;
+	if (!(std::cin >> index))
+	{
+		std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Invalid input!" << std::endl;
+		return ;
+	}
 	if (index > 8 || index < 1 || contacts[index - 1].getFirstName().empty())
 	{
 		std::cout << "Invalid index" << std::endl;
