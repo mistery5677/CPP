@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/03 11:00:57 by miafonso          #+#    #+#             */
+/*   Updated: 2025/03/03 12:36:03 by miafonso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 #include <string>
 
@@ -13,8 +25,9 @@ public:
     Contact();
     bool setContact();
     bool check_str(std::string str);
-    std::string getFirstName() { return firstName.substr(0, 8); };
-    std::string getLastName() { return lastName.substr(0, 8); };
-    std::string getNickName() { return nickName.substr(0, 8); };
-    std::string getDarkestSecret() { return darkestSecret.substr(0, 8); };
+    std::string getFirstName() { return firstName; };
+    std::string getLastName() { return lastName; };
+    std::string getNickName() { return nickName; };
+    std::string getPhoneNumber() { return phoneNumber; };
+    std::string getDarkestSecret() { return darkestSecret; };
 };
