@@ -1,12 +1,11 @@
 #pragma once
+#include <ostream>
 
 class Fixed {
 private:
     int value;
-    static const int fractionalBits = 8; // Apenas para representar a parte fracionária
-
+    static const int fractionalBits = 8;
 public:
-    // Construtores e destrutores
     Fixed();
     Fixed(const Fixed& fixed);
     Fixed& operator=(const Fixed& fixed);
@@ -16,9 +15,8 @@ public:
 
 ///////////// PART 2 /////////////
     Fixed(const int value);
-    Fixed(const float value);
-    float toFloat();
-    int toInt();
-    friend std::ostream& operator<<(std::ostream& os, Fixed& fp);
+    Fixed(const float floatValue);
+    float toFloat() const;
+    int toInt() const;
+    friend std::ostream& operator<<(std::ostream& os, const Fixed& fp);
 };
-
