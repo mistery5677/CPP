@@ -19,4 +19,6 @@ public:
     float toFloat() const;
     int toInt() const;
     friend std::ostream& operator<<(std::ostream& os, const Fixed& fp);
+
+///////////// PART 3 /////////////
 };
