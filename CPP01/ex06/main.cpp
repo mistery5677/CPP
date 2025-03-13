@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/13 14:28:45 by miafonso          #+#    #+#             */
+/*   Updated: 2025/03/13 14:28:46 by miafonso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Harl.hpp"
 #include <iostream>
 
@@ -19,7 +31,7 @@ int main(int argc, char **argv)
         }
         default:
         {
-            std::cout << "To many things for Harl to complain" << std::endl;
+            std::cout << "Many things for Harl to complain" << std::endl;
             break;
         }
     }
