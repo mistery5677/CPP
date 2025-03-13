@@ -21,4 +21,24 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Fixed& fp);
 
 ///////////// PART 3 /////////////
+    bool operator>(const Fixed& other) const;
+    bool operator<(const Fixed& other) const;
+    bool operator>=(const Fixed& other) const;
+    bool operator<=(const Fixed& other) const;
+    bool operator==(const Fixed& other) const;
+    bool operator!=(const Fixed& other) const;
+
+    Fixed& operator++();
+    Fixed operator++(int);
+    Fixed& operator--();
+    Fixed operator--(int);
+    Fixed operator+(const Fixed& other) const;
+    Fixed operator-(const Fixed& other) const;
+    Fixed operator/(const Fixed& other) const;
+    Fixed operator*(const Fixed& other) const;
+
+    static Fixed& min(Fixed& n1, Fixed& n2);
+    const static Fixed& min(const Fixed& n1, const Fixed& n2);
+    static Fixed& max(Fixed& n1, Fixed& n2);
+    const static Fixed& max(const Fixed& n1, const Fixed& n2);
 };
