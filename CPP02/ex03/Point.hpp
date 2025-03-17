@@ -1,14 +1,18 @@
 #pragma  once
+#include "Fixed.hpp"
 
 class Point
 {
 private:
-    const int x;
-    const int y;
+    const Fixed x;
+    const Fixed y;
 public:
     Point();
     Point(const float x, const float y);
     Point(const Point& other);
     Point operator=(const Point& other);
     ~Point();
+
+    int getX();
+    int getY();
 };
