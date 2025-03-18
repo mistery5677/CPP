@@ -37,8 +37,8 @@ public:
     Fixed operator/(const Fixed& other) const;
     Fixed operator*(const Fixed& other) const;
 
-    static Fixed& min(Fixed& n1, Fixed& n2);
-    const static Fixed& min(const Fixed& n1, const Fixed& n2);
-    static Fixed& max(Fixed& n1, Fixed& n2);
-    const static Fixed& max(const Fixed& n1, const Fixed& n2);
+    static Fixed& min(Fixed& a, Fixed& b);
+    static const Fixed& min(const Fixed& a, const Fixed& b);
+    static Fixed& max(Fixed& a, Fixed& b);
+    static const Fixed& max(const Fixed& a, const Fixed& b);
 };
