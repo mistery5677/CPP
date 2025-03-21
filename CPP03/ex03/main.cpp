@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 void    printIndex(int part){
     std::cout << "**************************" << std::endl;
@@ -25,7 +26,7 @@ int main(){
     
     std::cout << std::endl;
 
-///////////// TEST PART2 //////////////
+///////////// TEST PART 2 //////////////
 
     printIndex(2);
     ScavTrap scav;
@@ -46,5 +47,49 @@ int main(){
     scavClone.guardGate();
     scavClone.guardGate();
     
+    std::cout << std::endl;
+
+///////////// TEST PART  3 //////////////
+
+    printIndex(3);
+    FragTrap frag;
+    FragTrap fragClone(clapClone);
+
+    std::cout << std::endl;
+
+    frag.attack("Tomas");
+    frag.beRepaired(10);
+    frag.takeDamage(10);
+    frag.highFivesGuys();
+
+    std::cout << std::endl;
+
+    fragClone.attack("Miguel");
+    fragClone.beRepaired(30);
+    fragClone.takeDamage(20);
+    fragClone.highFivesGuys();
+
+    std::cout << std::endl;
+
+/////////////// TESTE PART 4 /////////////
+
+    printIndex(4);
+    DiamondTrap diamond;
+    DiamondTrap diamondClone(clapClone);
+
+    std::cout << std::endl;
+
+    diamond.attack("Tomas");
+    diamond.beRepaired(10);
+    diamond.takeDamage(10);
+    diamond.highFivesGuys();
+
+    std::cout << std::endl;
+
+    diamondClone.attack("Miguel");
+    diamondClone.beRepaired(30);
+    diamondClone.takeDamage(20);
+    diamondClone.highFivesGuys();
+
     std::cout << std::endl;
 }

@@ -1,7 +1,6 @@
 #include "ClapTrap.hpp"
 
-int main()
-{
+int main(){
     ClapTrap clapTrap("miguel");
 
     clapTrap.attack("42");

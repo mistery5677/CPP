@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 void    printIndex(int part){
     std::cout << "**************************" << std::endl;
@@ -46,5 +47,27 @@ int main(){
     scavClone.guardGate();
     scavClone.guardGate();
     
+    std::cout << std::endl;
+
+///////////// TEST PART3 //////////////
+
+    printIndex(3);
+    FragTrap frag;
+    FragTrap fragClone(clapClone);
+
+    std::cout << std::endl;
+
+    frag.attack("Tomas");
+    frag.beRepaired(10);
+    frag.takeDamage(10);
+    frag.highFivesGuys();
+
+    std::cout << std::endl;
+
+    fragClone.attack("Miguel");
+    fragClone.beRepaired(30);
+    fragClone.takeDamage(20);
+    fragClone.highFivesGuys();
+
     std::cout << std::endl;
 }
