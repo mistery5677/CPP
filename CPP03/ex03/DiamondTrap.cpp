@@ -1,3 +1,5 @@
+#include <iostream>
+// #include "ClapTrap.hpp"
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap()
@@ -16,7 +18,7 @@ DiamondTrap::DiamondTrap(ClapTrap clapTrap)
         std::cout << "DiamondTrap created with clapTrap constructor" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &copy): ClapTrap(){
+DiamondTrap::DiamondTrap(const DiamondTrap &copy): ClapTrap(), ScavTrap(), FragTrap(){
 	std::cout << "DiamondTrap Copy Constructor called" << std::endl;
 	*this = copy;
 }
@@ -32,6 +34,10 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src){
 
 DiamondTrap::~DiamondTrap(){
     std::cout << "Scav " << _name << " got destroyed" << std::endl;
+}
+
+void DiamondTrap::attack(const std::string& target){
+    ScavTrap::attack(target);
 }
 
 // void    DiamondTrap::attack(const std::string& target){
