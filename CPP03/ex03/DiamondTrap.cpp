@@ -3,22 +3,24 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap()
-    :ClapTrap(){
+    :ClapTrap("default_clap_trap"){
+        this->_name = "Default";
         this->_hitPoints = FragTrap::_hitPoints;
         this->_energyPoints = ScavTrap::_energyPoints;
         this->_attackDamage = FragTrap::_attackDamage;
         std::cout << "DiamondTrap created with default constructor" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(ClapTrap clapTrap)
-    :ClapTrap(clapTrap){
+DiamondTrap::DiamondTrap(std::string name)
+    :ClapTrap(name + "_clap_trap"){
+        this->_name = name;
         this->_hitPoints = FragTrap::_hitPoints;
         this->_energyPoints = ScavTrap::_energyPoints;
         this->_attackDamage = FragTrap::_attackDamage;
-        std::cout << "DiamondTrap created with clapTrap constructor" << std::endl;
+        std::cout << "DiamondTrap created with parameter constructor" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &copy): ClapTrap(), ScavTrap(), FragTrap(){
+DiamondTrap::DiamondTrap(const DiamondTrap &copy): ClapTrap(copy._name), ScavTrap(copy._name), FragTrap(copy._name){
 	std::cout << "DiamondTrap Copy Constructor called" << std::endl;
 	*this = copy;
 }
@@ -33,24 +35,13 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src){
 }
 
 DiamondTrap::~DiamondTrap(){
-    std::cout << "Scav " << _name << " got destroyed" << std::endl;
+    std::cout << "DiamondTrap " << _name << " got destroyed" << std::endl;
 }
 
 void DiamondTrap::attack(const std::string& target){
     ScavTrap::attack(target);
 }
 
-// void    DiamondTrap::attack(const std::string& target){
-//     std::cout << "DiamondTrap " << _name << " attacks " << target << " causing " << _attackDamage << " points of damage!" << std::endl;
-// }
-
-// void    DiamondTrap::guardGate(){
-//     if (!guardMode){
-//         std::cout << this->_name << ": Guard mode ON" << std::endl;
-//         guardMode = true;
-//     }
-//     else{
-//         std::cout << this->_name << ": Guard mode OFF" << std::endl;
-//         guardMode = false;
-//     }
-// }
+void DiamondTrap::whoAmI(){
+    std::cout << "Claptrap " << ClapTrap::_name << " transformed into DiamondTrap " << _name << std::endl;
+}

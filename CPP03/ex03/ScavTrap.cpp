@@ -19,7 +19,7 @@ ScavTrap::ScavTrap(ClapTrap clapTrap)
     std::cout << "ScavTrap created with clapTrap constructor" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &copy): ClapTrap(){
+ScavTrap::ScavTrap(const ScavTrap &copy): ClapTrap(copy){
 	std::cout << "ScavTrap Copy Constructor called" << std::endl;
 	*this = copy;
 }

@@ -76,7 +76,7 @@ int main(){
 
     printIndex(4);
     DiamondTrap diamond;
-    DiamondTrap diamondClone(clapClone);
+    DiamondTrap diamondClone("Tomas");
 
     std::cout << std::endl;
 
@@ -84,6 +84,7 @@ int main(){
     diamond.beRepaired(10);
     diamond.takeDamage(10);
     diamond.highFivesGuys();
+    diamond.whoAmI();
 
     std::cout << std::endl;
 
@@ -91,6 +92,7 @@ int main(){
     diamondClone.beRepaired(30);
     diamondClone.takeDamage(20);
     diamondClone.highFivesGuys();
+    diamondClone.whoAmI();
 
     std::cout << std::endl;
 }

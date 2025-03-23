@@ -36,7 +36,6 @@ FragTrap &FragTrap::operator=(const FragTrap &src){
 	this->_hitPoints = src._hitPoints;
 	this->_energyPoints = src._energyPoints;
 	this->_attackDamage = src._attackDamage;
-    this->_guarding_gate = false;
 	return *this;
 }
 
