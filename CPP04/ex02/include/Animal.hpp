@@ -12,7 +12,7 @@ class Animal{
         Animal &operator=(const Animal &src);
         virtual ~Animal();
 
-        virtual void makeSound() const;
-        virtual std::string getType() const;
-        virtual std::string getIdea(int index) const;
+        virtual void makeSound() const = 0;
+        virtual std::string getType() const = 0;
+        virtual std::string getIdea(int index) const = 0;
 };

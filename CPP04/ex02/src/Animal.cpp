@@ -26,15 +26,15 @@ Animal::~Animal(){
     std::cout << "Animal " << _type << " got destroyed" << std::endl;
 }
 
-void Animal::makeSound() const{
-    std::cout << "Animal --> You have to specify which animal you want to make the sound" << std::endl;
-}
+// void Animal::makeSound() const{
+//     std::cout << "Animal --> You have to specify which animal you want to make the sound" << std::endl;
+// }
 
-std::string Animal::getType() const{
-    return _type;
-}
+// std::string Animal::getType() const{
+//     return _type;
+// }
 
-std::string Animal::getIdea(int index) const{
-    (void) index;
-    return NULL;
-}
+// std::string Animal::getIdea(int index) const{
+//     (void) index;
+//     return NULL;
+// }
