@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/31 23:54:30 by marvin            #+#    #+#             */
+/*   Updated: 2025/03/31 23:54:31 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "Fixed.hpp"
 #include <cmath>
@@ -10,8 +22,7 @@ Fixed::Fixed(): value(0)
 Fixed::Fixed(const Fixed& fixed)
 {
     std::cout << "Copy constructor called" << std::endl;
-    value = fixed.value; // A criar uma copia dos bits raw
-    std::cout << "Copy assignment operator called" << std::endl;
+    *this = fixed;
 }
 
 Fixed& Fixed::operator=(const Fixed& fixed)
@@ -19,7 +30,7 @@ Fixed& Fixed::operator=(const Fixed& fixed)
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &fixed) 
     {
-        value = fixed.value;
+        value = fixed.getRawBits();
     }
     return *this;
 }
@@ -31,7 +42,7 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits() const
 {
-    std::cout << "getRawBits member function called" << std::endl;
+    // std::cout << "getRawBits member function called" << std::endl;
     return value;
 }
 

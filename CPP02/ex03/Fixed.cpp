@@ -1,17 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/31 23:55:28 by marvin            #+#    #+#             */
+/*   Updated: 2025/03/31 23:55:29 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "Fixed.hpp"
 #include <cmath>
 
 Fixed::Fixed(): value(0)
 {
-    //std::cout << "Default constructor called" << std::endl;
+    std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& fixed)
 {
-    //std::cout << "Copy constructor called" << std::endl;
-    value = fixed.value;
-    //std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << "Copy constructor called" << std::endl;
+    *this = fixed;
 }
 
 Fixed& Fixed::operator=(const Fixed& fixed)
@@ -19,14 +30,14 @@ Fixed& Fixed::operator=(const Fixed& fixed)
     std::cout << "Copy assignment operator called" << std::endl;
     if (this != &fixed) 
     {
-        value = fixed.value;
+        value = fixed.getRawBits();
     }
     return *this;
 }
 
 Fixed::~Fixed()
 {
-    //std::cout << "Destructor called" << std::endl;
+    std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits() const

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/31 23:55:38 by marvin            #+#    #+#             */
+/*   Updated: 2025/03/31 23:55:45 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
 #include "Point.hpp"
 #include <iostream>
@@ -29,10 +41,8 @@ int main(void)
 {
     std::cout << "🔹 Testing Point Inside Triangle Algorithm 🔹\n\n";
 
-    // Caso 1: O ponto (1,1) está dentro do triângulo formado pelos pontos (0,0), (10,0) e (0,10)
     testPointInTriangle(Point(), Point(10, 0), Point(0, 10), Point(1, 1), true);
 
-    // Caso 2: O ponto (8.5, -9) está fora do triângulo formado pelos pontos (-1.5,-1.5), (2.5,2.5) e (-1,-2)
     testPointInTriangle(Point(-1.5, -1.5), Point(2.5, 2.5), Point(-1, -2), Point(8.5, -9), false);
 
     return 0;
