@@ -1,7 +1,8 @@
 #pragma once
+#include "AMateria.hpp"
 #include <string>
 
-class Cure {
+class Cure: public AMateria {
     private:
         std::string _type;
     public:
@@ -9,5 +10,7 @@ class Cure {
         Cure(std::string type);
         Cure(const Cure &copy);
         Cure &operator=(const Cure &src);
-        virtual ~Cure();
+        ~Cure();
+
+        AMateria* clone() const;
 };

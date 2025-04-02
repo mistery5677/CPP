@@ -1,7 +1,8 @@
 #pragma once
+#include "AMateria.hpp"
 #include <string>
 
-class Ice {
+class Ice: public AMateria {
     private:
         std::string _type;
     public:
@@ -9,5 +10,7 @@ class Ice {
         Ice(std::string type);
         Ice(const Ice &copy);
         Ice &operator=(const Ice &src);
-        virtual ~Ice();
+        ~Ice();
+
+        AMateria* clone() const;
 };

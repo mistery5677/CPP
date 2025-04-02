@@ -1,9 +1,9 @@
-NAME = Animals
+NAME = Amateria
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
-SRCS = main.cpp 
+SRCS = main.cpp src/AMateria.cpp src/Cure.cpp src/Ice.cpp src/ICharacter.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
