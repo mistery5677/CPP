@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 23:55:06 by marvin            #+#    #+#             */
-/*   Updated: 2025/03/31 23:55:07 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/03 15:56:36 by miafonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@ int main( void ) {
 		Fixed const d( Fixed( 5.05f ) + Fixed( 2 ) );
 		Fixed const e( Fixed( 5.05f ) - Fixed( 2 ) );
 
+		std::cout << "initial value a " << a << std::endl;
 		std::cout << "initial value b " << b << std::endl;
 		std::cout << "initial value c " << c << std::endl;
 		std::cout << "initial value d " << d << std::endl;
 		std::cout << "initial value e " << e << std::endl;
-		std::cout << "initial value a " << a << std::endl;
 
-		std::cout << "\nis " << b << " > " << a << "? " << (b > a) << " (true)" << std::endl;
-		std::cout << "is " << b << " < " << a << "  " << (b < a) << " (false)" << std::endl;
-		std::cout << "is " << a << " == 0? " << (a == 0) << " (true)" << std::endl;
+		std::cout << "\nis " << a << " == 0? " << (a == 0) << " (true)" << std::endl;
 		std::cout << "is " << a << " != 42? " << (a != 42) << " (true)" << std::endl;
+		std::cout << "is " << b << " > " << a << "? " << (b > a) << " (true)" << std::endl;
+		std::cout << "is " << b << " < " << a << "  " << (b < a) << " (false)" << std::endl;
 		std::cout << "is " << e << " >= " << d << "? " << (e >= d) << " (false)" << std::endl;
 		std::cout << "is " << e << " <= " << e << "? " << (e <= e) << " (true)\n" << std::endl;
 

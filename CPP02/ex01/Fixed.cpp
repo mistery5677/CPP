@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 23:54:30 by marvin            #+#    #+#             */
-/*   Updated: 2025/03/31 23:54:31 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/03 15:40:17 by miafonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ Fixed::Fixed(const float floatValue): value(roundf(floatValue * (1 << fractional
 
 float Fixed::toFloat() const
 {
-    return static_cast<float>(value) / (1 << fractionalBits); 
+    return ((float)value / (float)(1 << fractionalBits)); 
 }
 
 int Fixed::toInt() const 

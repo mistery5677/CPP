@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 23:54:53 by marvin            #+#    #+#             */
-/*   Updated: 2025/03/31 23:54:54 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/03 15:42:44 by miafonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 
 Fixed::Fixed(): value(0)
 {
-    std::cout << "Default constructor called" << std::endl;
+    // std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& fixed)
 {
-    std::cout << "Copy constructor called" << std::endl;
+    // std::cout << "Copy constructor called" << std::endl;
     *this = fixed;
 }
 
 Fixed& Fixed::operator=(const Fixed& fixed)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
+    // std::cout << "Copy assignment operator called" << std::endl;
     if (this != &fixed) 
     {
         value = fixed.getRawBits();
@@ -37,7 +37,7 @@ Fixed& Fixed::operator=(const Fixed& fixed)
 
 Fixed::~Fixed()
 {
-    std::cout << "Destructor called" << std::endl;
+    // std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits() const
@@ -55,17 +55,17 @@ void Fixed::setRawBits(int const raw)
 
 Fixed::Fixed(const int value): value(value << fractionalBits)
 {
-    //std::cout << "Int constructor called" << std::endl;
+    // std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float floatValue): value(roundf(floatValue * (1 << fractionalBits)))
 {
-    //std::cout << "Float constructor called" << std::endl;
+    // std::cout << "Float constructor called" << std::endl;
 }
 
 float Fixed::toFloat() const
 {
-    return static_cast<float>(value) / (1 << fractionalBits); 
+    return ((float)value / (float)(1 << fractionalBits)); 
 }
 
 int Fixed::toInt() const 
@@ -78,6 +78,7 @@ std::ostream& operator<<(std::ostream& os, const Fixed& fp)
     os << fp.toFloat();
     return os;
 }
+
 ///////////// PART 3 /////////////
 
 bool Fixed::operator>(const Fixed& other) const
