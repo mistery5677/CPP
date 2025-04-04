@@ -6,7 +6,7 @@
 /*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 14:25:45 by miafonso          #+#    #+#             */
-/*   Updated: 2025/04/04 14:25:46 by miafonso         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:48:13 by miafonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int main(){
     scavClone.takeDamage(20);
     scavClone.guardGate();
     scavClone.guardGate();
+    
+    // std::cout << "Life " << scav.getHitPoints() << std::endl;
     
     std::cout << std::endl;
 }

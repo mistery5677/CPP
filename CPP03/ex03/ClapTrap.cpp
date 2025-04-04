@@ -6,7 +6,7 @@
 /*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 14:25:55 by miafonso          #+#    #+#             */
-/*   Updated: 2025/04/04 14:25:56 by miafonso         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:46:13 by miafonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ ClapTrap::~ClapTrap(){
 }
 
 void    ClapTrap::attack(const std::string& target){
-    if (_energyPoints > 0){
+    if (_hitPoints <= 0){
+        std::cout << "ClapTrap " << _name << " is dead 💀💀" << std::endl;
+    }
+    else if (_energyPoints > 0){
         std::cout << "ClapTrap " << _name << " attacks " << target << " causing " << _attackDamage << " points of damage!" << std::endl;
         _energyPoints--;
     }
@@ -55,12 +58,20 @@ void    ClapTrap::attack(const std::string& target){
 }
 
 void    ClapTrap::takeDamage(unsigned int amount){
-    std::cout << "ClapTrap " << _name << " took " << amount << " damage" << std::endl;
-    _hitPoints -= amount;
+    if (_hitPoints <= 0){
+        std::cout << "ClapTrap " << _name << " is dead 💀💀" << std::endl;
+    }
+    else {
+        std::cout << "ClapTrap " << _name << " took " << amount << " damage" << std::endl;
+        _hitPoints -= amount;
+    }
 }
 
 void    ClapTrap::beRepaired(unsigned int amount){
-    if (_energyPoints > 0){
+    if (_hitPoints <= 0){
+        std::cout << "ClapTrap " << _name << " is dead 💀💀" << std::endl;
+    }
+    else if (_energyPoints > 0){
         std::cout << "ClapTrap " << _name << " got " << amount << " repair points" << std::endl;
         _energyPoints--;
     }
