@@ -81,8 +81,8 @@ int main(){
     std::cout << std::endl;
 
     diamond.attack("Tomas");
-    diamond.beRepaired(10);
-    diamond.takeDamage(10);
+    // diamond.beRepaired(10);
+    // diamond.takeDamage(10);
     diamond.highFivesGuys();
     diamond.whoAmI();
 

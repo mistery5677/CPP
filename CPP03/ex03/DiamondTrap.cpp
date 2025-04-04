@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/04 14:27:11 by miafonso          #+#    #+#             */
+/*   Updated: 2025/04/04 14:27:11 by miafonso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 // #include "ClapTrap.hpp"
 #include "DiamondTrap.hpp"
@@ -43,5 +55,5 @@ void DiamondTrap::attack(const std::string& target){
 }
 
 void DiamondTrap::whoAmI(){
-    std::cout << "Claptrap " << ClapTrap::_name << " transformed into DiamondTrap " << _name << std::endl;
+    std::cout << "DiamondTrap got constructed with the " << ClapTrap::_name << " ClapTrap scraps " << _name << std::endl;
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/04 14:26:00 by miafonso          #+#    #+#             */
+/*   Updated: 2025/04/04 14:26:00 by miafonso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "FragTrap.hpp"
 
@@ -43,6 +55,22 @@ FragTrap::~FragTrap(){
     std::cout << "FragTrap " << _name << " got destroyed!" << std::endl;
 }
 
+void    FragTrap::attack(const std::string& target){
+    if (_hitPoints <= 0){
+        std::cout << "FragTrap " << _name << " is dead 💀💀" << std::endl;
+    }
+    else if (_energyPoints > 0) {
+        std::cout << "FragTrap " << _name << " attacks " << target << " causing " << _attackDamage << " points of damage!" << std::endl;
+        _energyPoints--;
+    }
+    else
+        std::cout << "FragTrap " << _name << " don't have enough energy to attack!" << std::endl;
+}
+
 void FragTrap::highFivesGuys(){
-    std::cout << "FragTrap " << _name << " want to give an high five!" << std::endl;   
+    if (_hitPoints <= 0){
+        std::cout << "FragTrap " << _name << " is dead 💀💀" << std::endl;
+    }
+    else
+        std::cout << "FragTrap " << _name << " want to give an high five!" << std::endl;   
 }

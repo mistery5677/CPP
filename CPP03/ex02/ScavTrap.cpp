@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/04 14:19:40 by miafonso          #+#    #+#             */
+/*   Updated: 2025/04/04 14:26:08 by miafonso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "ScavTrap.hpp"
 
@@ -47,7 +59,10 @@ ScavTrap::~ScavTrap(){
 }
 
 void    ScavTrap::attack(const std::string& target){
-    if (_energyPoints > 0) {
+    if (_hitPoints <= 0){
+        std::cout << "ScavTrap " << _name << " is dead 💀💀" << std::endl;
+    }
+    else if (_energyPoints > 0) {
         std::cout << "ScavTrap " << _name << " attacks " << target << " causing " << _attackDamage << " points of damage!" << std::endl;
         _energyPoints--;
     }
@@ -56,7 +71,10 @@ void    ScavTrap::attack(const std::string& target){
 }
 
 void    ScavTrap::guardGate(){
-    if (!_guardMode){
+    if (_hitPoints <= 0){
+        std::cout << "ScavTrap " << _name << " is dead 💀💀" << std::endl;
+    }
+    else if (!_guardMode){
         std::cout << this->_name << ": Guard mode ON" << std::endl;
         _guardMode = true;
     }
