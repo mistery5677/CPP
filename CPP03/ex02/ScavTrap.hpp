@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/04 14:26:10 by miafonso          #+#    #+#             */
-/*   Updated: 2025/04/04 14:26:11 by miafonso         ###   ########.fr       */
+/*   Created: 2025/04/04 14:25:51 by miafonso          #+#    #+#             */
+/*   Updated: 2025/04/05 02:03:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ class ScavTrap: public ClapTrap{
         bool    _guardMode;
     public:
         ScavTrap();
-        ScavTrap(ClapTrap clapTrap);
-        ScavTrap(const ScavTrap &copy);
         ScavTrap(std::string name);
+        ScavTrap(const ScavTrap &copy);
         ~ScavTrap();
         ScavTrap& operator=(const ScavTrap &other);
 

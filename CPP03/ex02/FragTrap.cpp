@@ -22,24 +22,15 @@ FragTrap::FragTrap()
         std::cout << "FragTrap created with default constructor" << std::endl;
 }
 
-FragTrap::FragTrap(ClapTrap clapTrap)
-    :ClapTrap(clapTrap){
-        this->_hitPoints = 100;
-        this->_energyPoints = 100;
-        this->_attackDamage = 30;
-        std::cout << "FragTrap created with ClapTrap name constructor" << std::endl;
-}
-
-FragTrap::FragTrap(const FragTrap &copy): ClapTrap(copy){
-    std::cout << "FragTrap Copy Constructor called" << std::endl;
-	*this = copy;
-}
-
 FragTrap::FragTrap(std::string name): ClapTrap(name){
     this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
 	std::cout << "FragTrap Constructor with name " << this->_name << " called" << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap &copy): ClapTrap(copy){
+    std::cout << "FragTrap Copy Constructor called" << std::endl;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &src){

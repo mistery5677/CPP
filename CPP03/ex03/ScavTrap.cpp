@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/04 14:19:40 by miafonso          #+#    #+#             */
-/*   Updated: 2025/04/04 14:26:08 by miafonso         ###   ########.fr       */
+/*   Created: 2025/04/04 14:19:58 by miafonso          #+#    #+#             */
+/*   Updated: 2025/04/05 02:05:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ ScavTrap::ScavTrap()
     std::cout << "ScavTrap created with default constructor" << std::endl;
 }
 
-ScavTrap::ScavTrap(ClapTrap clapTrap)
-    :ClapTrap(clapTrap){
+ScavTrap::ScavTrap(std::string name)
+    :ClapTrap(name){
     this->_hitPoints = 100;
     this->_energyPoints = 50;
     this->_attackDamage = 20;
@@ -33,15 +33,7 @@ ScavTrap::ScavTrap(ClapTrap clapTrap)
 
 ScavTrap::ScavTrap(const ScavTrap &copy): ClapTrap(){
 	std::cout << "ScavTrap Copy Constructor called" << std::endl;
-	*this = copy;
-}
-
-ScavTrap::ScavTrap(std::string name): ClapTrap(name){
-    this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 20;
-    this->_guardMode = false;
-	std::cout << "ScavTrap Constructor with name " << this->_name << " called" << std::endl;
+	this->_guardMode = copy._guardMode;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &src){
@@ -50,7 +42,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src){
 	this->_hitPoints = src._hitPoints;
 	this->_energyPoints = src._energyPoints;
 	this->_attackDamage = src._attackDamage;
-    this->_guardMode = false;
+    this->_guardMode = src._guardMode;
 	return *this;
 }
 

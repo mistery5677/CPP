@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 14:26:04 by miafonso          #+#    #+#             */
-/*   Updated: 2025/04/04 14:26:05 by miafonso         ###   ########.fr       */
+/*   Updated: 2025/04/05 02:07:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int main(){
 
     printIndex(2);
     ScavTrap scav;
-    ScavTrap scavClone(clapClone);
+    ScavTrap scavClone("Scav_Clone");
 
     std::cout << std::endl;
 
@@ -65,7 +65,7 @@ int main(){
 
     printIndex(3);
     FragTrap frag;
-    FragTrap fragClone(clapClone);
+    FragTrap fragClone("Clap_Clone");
 
     std::cout << std::endl;
 

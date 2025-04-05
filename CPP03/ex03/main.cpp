@@ -31,7 +31,7 @@ int main(){
 
     printIndex(2);
     ScavTrap scav;
-    ScavTrap scavClone(clapClone);
+    ScavTrap scavClone("Scav_Clone");
 
     std::cout << std::endl;
 
@@ -54,7 +54,7 @@ int main(){
 
     printIndex(3);
     FragTrap frag;
-    FragTrap fragClone(clapClone);
+    FragTrap fragClone("Frag_Clone");
 
     std::cout << std::endl;
 
@@ -76,7 +76,7 @@ int main(){
 
     printIndex(4);
     DiamondTrap diamond;
-    DiamondTrap diamondClone("Tomas");
+    DiamondTrap diamondClone("Diamond_Clone");
 
     std::cout << std::endl;
 

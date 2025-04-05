@@ -15,7 +15,7 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap()
-    :ClapTrap("default_clap_trap"){
+    :ClapTrap("default_clap_name"){
         this->_name = "Default";
         this->_hitPoints = FragTrap::_hitPoints;
         this->_energyPoints = ScavTrap::_energyPoints;
@@ -24,7 +24,7 @@ DiamondTrap::DiamondTrap()
 }
 
 DiamondTrap::DiamondTrap(std::string name)
-    :ClapTrap(name + "_clap_trap"){
+    :ClapTrap(name + "_clap_name"){
         this->_name = name;
         this->_hitPoints = FragTrap::_hitPoints;
         this->_energyPoints = ScavTrap::_energyPoints;

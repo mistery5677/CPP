@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 14:25:45 by miafonso          #+#    #+#             */
-/*   Updated: 2025/04/04 18:48:13 by miafonso         ###   ########.fr       */
+/*   Updated: 2025/04/05 02:02:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(){
 
     printIndex(2);
     ScavTrap scav;
-    ScavTrap scavClone(clapClone);
+    ScavTrap scavClone("Teste");
 
     std::cout << std::endl;
 
