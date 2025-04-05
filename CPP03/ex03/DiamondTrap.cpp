@@ -55,5 +55,9 @@ void DiamondTrap::attack(const std::string& target){
 }
 
 void DiamondTrap::whoAmI(){
-    std::cout << "DiamondTrap got constructed with the " << ClapTrap::_name << " ClapTrap scraps " << _name << std::endl;
+    if (_hitPoints <= 0){
+        std::cout << "DiamondTrap " << _name << " is dead 💀💀" << std::endl;
+    }
+    else 
+        std::cout << "DiamondTrap got constructed with the " << ClapTrap::_name << " ClapTrap scraps " << _name << std::endl;
 }
