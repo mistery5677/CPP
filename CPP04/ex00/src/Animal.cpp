@@ -12,13 +12,13 @@ Animal::Animal(std::string type){
 }
 
 Animal::Animal(const Animal &copy){
-    std::cout << "Animal --> _type " << _type << " coppyng information" << std::endl;
     this->_type = copy._type;
+    std::cout << "Animal --> _type " << _type << " coppyng information" << std::endl;
 }
 
 Animal& Animal::operator=(const Animal &src){
-    std::cout << "Animal --> _type " << _type << " its overloading the = operator" << std::endl;
     this->_type = src._type;
+    std::cout << "Animal --> _type " << _type << " its overloading the = operator" << std::endl;
     return *this;
 }
 

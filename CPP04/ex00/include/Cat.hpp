@@ -3,7 +3,7 @@
 
 class Cat: public Animal{
     private:
-        std::string _type;
+        std::string _catType;
     public:
         Cat();
         Cat(std::string type);

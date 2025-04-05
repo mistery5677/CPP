@@ -4,8 +4,8 @@
 
 class Cat: public Animal{
     private:
-        std::string _type;
-        Brain *_brain;
+        std::string _catType;
+        Brain *_catBrain;
     public:
         Cat();
         Cat(std::string type);
