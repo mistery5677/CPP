@@ -1,5 +1,6 @@
 #pragma once
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 #include <string>
 
 class Ice: public AMateria {
@@ -12,5 +13,6 @@ class Ice: public AMateria {
         Ice &operator=(const Ice &src);
         ~Ice();
 
+        void use(ICharacter& target);
         AMateria* clone() const;
 };

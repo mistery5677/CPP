@@ -1,7 +1,7 @@
 #include "../include/Ice.hpp"
 #include <iostream>
 
-Ice::Ice(): _type("Ice"){
+Ice::Ice(): AMateria("Ice"){
     std::cout << "Ice default constructor" << std::endl;
 }
 
@@ -22,7 +22,11 @@ Ice& Ice::operator=(const Ice &src){
 }
 
 Ice::~Ice(){
-    std::cout << "Ice " << _type << " got destroyed" << std::endl;
+    std::cout << "Ice got destroyed" << std::endl;
+}
+
+void Ice::use(ICharacter &target){
+    std::cout << "Freezed " << target.getName() << std::endl;
 }
 
 AMateria* Ice::clone() const{

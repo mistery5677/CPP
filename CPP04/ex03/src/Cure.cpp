@@ -1,7 +1,7 @@
 #include "../include/Cure.hpp"
 #include <iostream>
 
-Cure::Cure(): _type("Cure"){
+Cure::Cure(): AMateria("Cure"){
     std::cout << "Cure default constructor" << std::endl;
 }
 
@@ -22,7 +22,11 @@ Cure& Cure::operator=(const Cure &src){
 }
 
 Cure::~Cure(){
-    std::cout << "Cure " << _type << " got destroyed" << std::endl;
+    std::cout << "Cure got destroyed" << std::endl;
+}
+
+void Cure::use(ICharacter &target){
+    std::cout << "Healed " << target.getName() << std::endl;
 }
 
 AMateria* Cure::clone() const{

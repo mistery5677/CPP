@@ -1,12 +1,14 @@
 #pragma once
+#include "ICharacter.hpp"
 #include <string>
+
+class ICharacter;
 
 class AMateria {
     protected:
         std::string _type;
     public:
         AMateria();
-        AMateria(std::string type);
         AMateria(const AMateria &copy);
         AMateria &operator=(const AMateria &src);
         virtual ~AMateria();
