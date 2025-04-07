@@ -42,7 +42,21 @@ int main(){
     miguel->unequip(0);
 
     miguel->checkInventory();
+    miguel->equip(ice);
+    miguel->equip(ice);
+    miguel->equip(ice);
+    miguel->equip(ice);
+    miguel->equip(ice);
 
+    miguel->checkInventory();
+    miguel->unequip(0);
+    miguel->unequip(0);
+
+    miguel->checkInventory();
+    miguel->use(0, *character);
+    miguel->use(1, *character);
+
+    miguel->checkInventory();
 
     std::cout << "\n///////DESTUCTION\\\\\\\\\\\n" << std::endl;
 
@@ -50,5 +64,6 @@ int main(){
     delete cure_clone;
     delete ice;
     delete ice_clone;
-    delete miguel;   
+    delete miguel;
+    delete character;
 }

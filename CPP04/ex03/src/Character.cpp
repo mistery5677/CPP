@@ -25,8 +25,10 @@ Character& Character::operator=(const Character& src){
         this->_name = src._name;
 
         for (int i = 0; i < 4; ++i) {
-            if (this->_inventory[i])
+            if (this->_inventory[i]){
                 delete this->_inventory[i];
+                this->_inventory[i] = NULL;
+            }
 
             if (src._inventory[i])
                 this->_inventory[i] = src._inventory[i]->clone();
@@ -80,6 +82,8 @@ void Character::use(int idx, ICharacter& target){
     else {
         if (_inventory[idx] != NULL){
             std::cout << _name << " used " << _inventory[idx]->getType() << " in " << target.getName() << std::endl;
+            delete _inventory[idx];
+            _inventory[idx] = NULL;
         }
         else
             std::cout << "Space empty, please equip AMateria" << std::endl;
