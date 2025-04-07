@@ -18,10 +18,31 @@ int main(){
 
     std::cout << "\n///////Creating Character\\\\\\\\\\\n" << std::endl;
 
-    Character *miguel = new Character();
+    ICharacter *character = new Character();
+    ICharacter *miguel = new Character("Miguel");
+
+    std::cout << "\n///////Testing Character\\\\\\\\\\\n" << std::endl;
+
+    character->equip(cure);
+    character->equip(ice);
+
+    character->checkInventory();
+
+    character->unequip(0);
+
+    character->checkInventory();
+
+    std::cout << "\n///////Testing Miguel\\\\\\\\\\\n" << std::endl;
 
     miguel->equip(cure);
     miguel->equip(ice);
+
+    miguel->checkInventory();
+
+    miguel->unequip(0);
+
+    miguel->checkInventory();
+
 
     std::cout << "\n///////DESTUCTION\\\\\\\\\\\n" << std::endl;
 

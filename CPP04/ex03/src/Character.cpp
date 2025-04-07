@@ -4,10 +4,14 @@
 
 Character::Character(): _name("Default"){
     std::cout << "Character default constructor called" << std::endl;
+    for (int i = 0; i < 4; i++)
+        _inventory[i] = NULL;
 }
 
 Character::Character(std::string name): _name(name){
     std::cout << "Character default constructor called" << std::endl;
+    for (int i = 0; i < 4; i++)
+        _inventory[i] = NULL;
 }
 
 Character::Character(const Character& copy){
@@ -35,6 +39,9 @@ Character& Character::operator=(const Character& src){
 
 Character::~Character(){
     std::cout << "Character destructor" << std::endl;
+    for (int i = 0; i < 4; i++)
+        if (_inventory[i] != NULL)
+            delete _inventory[i];
 }
 
 std::string const & Character::getName() const {
@@ -44,8 +51,8 @@ std::string const & Character::getName() const {
 void Character::equip(AMateria* m){
     for (int i = 0; i < 4; i++){
         if (_inventory[i] == NULL){
+            _inventory[i] = m->clone();
             std::cout << "Equiped: " << m->getType() << std::endl;
-            _inventory[i] = m;
             return ;
         }
     }
@@ -58,11 +65,15 @@ void Character::unequip(int idx){
     else {
         if (_inventory[idx] != NULL){
             std::cout << "Unequiping the materia number " << idx << " type: " << _inventory[idx]->getType() << std::endl;
+            delete _inventory[idx];
+            _inventory[idx] = NULL;
+
         }
         else
             std::cout << "Space empty, please equip AMateria" << std::endl;
     }
 }
+
 void Character::use(int idx, ICharacter& target){
     if (idx < 0 || idx > 3)
         std::cout << "Type a valid idx to use, from 0 - 3" << std::endl;
@@ -73,4 +84,14 @@ void Character::use(int idx, ICharacter& target){
         else
             std::cout << "Space empty, please equip AMateria" << std::endl;
     }
+}
+
+void Character::checkInventory(){
+    std::cout << "\nChecking Inventory of " << _name << std::endl;
+
+    for (int i = 0; i < 4; i++)
+        if (_inventory[i] != NULL)
+            std::cout << "Inventory[" << i << "] has " << _inventory[i]->getType() << std::endl;
+
+    std::cout << std::endl;
 }
