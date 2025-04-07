@@ -82,17 +82,17 @@ int main(){
 
     diamond.attack("Tomas");
     diamond.beRepaired(10);
-    diamond.takeDamage(10);
+    diamond.takeDamage(1000);
     diamond.highFivesGuys();
     diamond.whoAmI();
 
     std::cout << std::endl;
 
-    // diamondClone.attack("Miguel");
-    // diamondClone.beRepaired(30);
-    // diamondClone.takeDamage(20);
-    // diamondClone.highFivesGuys();
-    // diamondClone.whoAmI();
+    diamondClone.attack("Miguel");
+    diamondClone.beRepaired(30);
+    diamondClone.takeDamage(20);
+    diamondClone.highFivesGuys();
+    diamondClone.whoAmI();
 
     std::cout << std::endl;
 }

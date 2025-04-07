@@ -6,7 +6,7 @@
 /*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 12:30:08 by miafonso          #+#    #+#             */
-/*   Updated: 2025/04/04 18:44:30 by miafonso         ###   ########.fr       */
+/*   Updated: 2025/04/07 14:24:34 by miafonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ void    ClapTrap::takeDamage(unsigned int amount){
     }
     else {
         std::cout << "ClapTrap " << _name << " took " << amount << " damage" << std::endl;
-        _hitPoints -= amount;
+        if (_hitPoints <= amount)
+            _hitPoints = 0;
+        else
+            _hitPoints -= amount;
     }
 }
 
