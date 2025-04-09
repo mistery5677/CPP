@@ -4,11 +4,11 @@
 MateriaSource::MateriaSource(){
     for (int i = 0; i < 4; i++)
         _inventory[i] = NULL;
-    std::cout << "MateriaSource default constructor" << std::endl;
+    // std::cout << "MateriaSource default constructor" << std::endl;
 }
 
 MateriaSource::MateriaSource(const MateriaSource& copy){
-    std::cout << "MateriaSource copy constructor called" << std::endl;
+    // std::cout << "MateriaSource copy constructor called" << std::endl;
     for(int i = 0; i < 4; i++)
 	{
 		if ((copy._inventory)[i])
@@ -17,11 +17,11 @@ MateriaSource::MateriaSource(const MateriaSource& copy){
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& src){
-    std::cout << "MateriaSource equal operator called" << std::endl;
+    // std::cout << "MateriaSource equal operator called" << std::endl;
     if (this != &src) {
         for (int i = 0; i < 4; ++i) {
             if (this->_inventory[i]){
-                delete this->_inventory[i];
+                // delete this->_inventory[i];
                 this->_inventory[i] = NULL;
             }
 
@@ -35,7 +35,7 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& src){
 }
 
 MateriaSource::~MateriaSource(){
-    std::cout << "MateriaSource destructor" << std::endl;
+    // std::cout << "MateriaSource destructor" << std::endl;
     for (int i = 0; i < 4; i++)
         if (_inventory[i] != NULL)
             delete _inventory[i];
@@ -43,9 +43,10 @@ MateriaSource::~MateriaSource(){
 
 void    MateriaSource::learnMateria(AMateria* materia){
     for (int i = 0; i < 4; i++) {
-        if (_inventory[i] != NULL){
+        if (_inventory[i] == NULL){
             std::cout << "Learned a new materia: " << materia->getType() << std::endl;
             _inventory[i] = materia;
+            return ;
         }
     }
     std::cout << "Too much knowledge" << std::endl;
@@ -53,7 +54,7 @@ void    MateriaSource::learnMateria(AMateria* materia){
 
 AMateria*   MateriaSource::createMateria(std::string const & type){
     for (int i = 0; i < 4; i++)
-        if (_inventory[i]->getType() == type){
+        if (_inventory[i] != NULL && _inventory[i]->getType() == type){
             std::cout << "Creating a new materia with type: " << type << std::endl;
             return _inventory[i]->clone();
         }

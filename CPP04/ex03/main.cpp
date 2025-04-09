@@ -56,19 +56,19 @@ int main(){
 
     std::cout << "\n///////Testing Miguel\\\\\\\\\\\n" << std::endl;
 
-    miguel->equip(cure);
-    miguel->equip(ice);
+    miguel->equip(cure_clone);
+    miguel->equip(ice_clone);
 
     miguel->checkInventory();
 
     miguel->unequip(0);
 
     miguel->checkInventory();
-    miguel->equip(ice);
-    miguel->equip(ice);
-    miguel->equip(ice);
-    miguel->equip(ice);
-    miguel->equip(ice);
+    miguel->equip(ice_clone);
+    miguel->equip(ice_clone);
+    miguel->equip(ice_clone);
+    miguel->equip(ice_clone);
+    miguel->equip(ice_clone);
 
     miguel->checkInventory();
     miguel->unequip(0);
@@ -77,10 +77,10 @@ int main(){
     miguel->checkInventory();
     miguel->use(0, *character);
     miguel->use(1, *character);
-    miguel->equip(ice);
+    miguel->equip(ice_clone);
     miguel->checkInventory();
 
-    miguel->equip(ice);
+    miguel->equip(ice_clone);
     miguel->checkInventory();
 
     std::cout << "\n///////DESTUCTION\\\\\\\\\\\n" << std::endl;

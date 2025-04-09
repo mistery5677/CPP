@@ -1,21 +1,22 @@
 #include "../include/Character.hpp"
 #include <iostream>
+#include <iostream>
 #include <string>
 
 Character::Character(): _name("Default"){
-    std::cout << "Character default constructor called" << std::endl;
+    // std::cout << "Character default constructor called" << std::endl;
     for (int i = 0; i < 4; i++)
         _inventory[i] = NULL;
 }
 
 Character::Character(std::string name): _name(name){
-    std::cout << "Character default constructor called" << std::endl;
+    // std::cout << "Character default constructor called" << std::endl;
     for (int i = 0; i < 4; i++)
         _inventory[i] = NULL;
 }
 
 Character::Character(const Character& copy){
-    std::cout << "Character copy constructor called" << std::endl;
+    // std::cout << "Character copy constructor called" << std::endl;
     for(int i = 0; i < 4; i++)
 	{
 		if ((copy._inventory)[i])
@@ -24,13 +25,13 @@ Character::Character(const Character& copy){
 }
 
 Character& Character::operator=(const Character& src){
-    std::cout << "Character equal operator called" << std::endl;
-    if (this != &src) { // sempre fazer essa verificação
+    // std::cout << "Character equal operator called" << std::endl;
+    if (this != &src) { 
         this->_name = src._name;
 
         for (int i = 0; i < 4; ++i) {
             if (this->_inventory[i]){
-                delete this->_inventory[i];
+                // delete this->_inventory[i];
                 this->_inventory[i] = NULL;
             }
 
@@ -44,10 +45,10 @@ Character& Character::operator=(const Character& src){
 }
 
 Character::~Character(){
-    std::cout << "Character destructor" << std::endl;
-    for (int i = 0; i < 4; i++)
-        if (_inventory[i] != NULL)
-            delete _inventory[i];
+    // std::cout << "Character destructor" << std::endl;
+    // for (int i = 0; i < 4; i++)
+    //     if (_inventory[i] != NULL)
+            // delete _inventory[i];
 }
 
 std::string const & Character::getName() const {
@@ -57,7 +58,7 @@ std::string const & Character::getName() const {
 void Character::equip(AMateria* m){
     for (int i = 0; i < 4; i++){
         if (_inventory[i] == NULL){
-            _inventory[i] = m->clone();
+            _inventory[i] = m;
             std::cout << "Equiped: " << m->getType() << std::endl;
             return ;
         }
@@ -71,9 +72,7 @@ void Character::unequip(int idx){
     else {
         if (_inventory[idx] != NULL){
             std::cout << "Unequiping the materia number " << idx << " type: " << _inventory[idx]->getType() << std::endl;
-            delete _inventory[idx];
             _inventory[idx] = NULL;
-
         }
         else
             std::cout << "Space empty, please equip AMateria" << std::endl;
@@ -86,7 +85,6 @@ void Character::use(int idx, ICharacter& target){
     else {
         if (_inventory[idx] != NULL){
             std::cout << _name << " used " << _inventory[idx]->getType() << " in " << target.getName() << std::endl;
-            delete _inventory[idx];
             _inventory[idx] = NULL;
         }
         else
