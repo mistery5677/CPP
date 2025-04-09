@@ -2,9 +2,31 @@
 #include "include/Ice.hpp"
 #include "include/Cure.hpp"
 #include "include/Character.hpp"
+#include "include/IMateriaSource.hpp"
+#include "include/MateriaSource.hpp"
 #include <iostream>
 
 int main(){
+
+    std::cout << "\n///////Subject Tests\\\\\\\\\\\n" << std::endl;
+
+    IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+    ICharacter* me = new Character("me");
+    AMateria* tmp;
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
+    ICharacter* bob = new Character("bob");
+    me->use(0, *bob);
+    me->use(1, *bob);
+    delete bob;
+    delete me;
+    delete src;
+
+    std::cout << "\n///////Extra tests\\\\\\\\\\\n" << std::endl;
 
     std::cout << "\n///////Creating Cure\\\\\\\\\\\n" << std::endl;
 
@@ -55,7 +77,10 @@ int main(){
     miguel->checkInventory();
     miguel->use(0, *character);
     miguel->use(1, *character);
+    miguel->equip(ice);
+    miguel->checkInventory();
 
+    miguel->equip(ice);
     miguel->checkInventory();
 
     std::cout << "\n///////DESTUCTION\\\\\\\\\\\n" << std::endl;

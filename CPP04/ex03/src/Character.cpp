@@ -16,7 +16,11 @@ Character::Character(std::string name): _name(name){
 
 Character::Character(const Character& copy){
     std::cout << "Character copy constructor called" << std::endl;
-    *this = copy;
+    for(int i = 0; i < 4; i++)
+	{
+		if ((copy._inventory)[i])
+			(this->_inventory)[i] = (copy._inventory[i])->clone();
+	}
 }
 
 Character& Character::operator=(const Character& src){
@@ -95,7 +99,7 @@ void Character::checkInventory(){
 
     for (int i = 0; i < 4; i++)
         if (_inventory[i] != NULL)
-            std::cout << "Inventory[" << i << "] has " << _inventory[i]->getType() << std::endl;
+            std::cout << _name << " inventory[" << i << "] has " << _inventory[i]->getType() << std::endl;
 
     std::cout << std::endl;
 }

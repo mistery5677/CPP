@@ -3,7 +3,7 @@ NAME = Amateria
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
-SRCS = main.cpp src/AMateria.cpp src/Cure.cpp src/Ice.cpp src/Character.cpp
+SRCS = main.cpp src/AMateria.cpp src/Cure.cpp src/Ice.cpp src/Character.cpp src/MateriaSource.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
