@@ -46,9 +46,12 @@ Character& Character::operator=(const Character& src){
 
 Character::~Character(){
     // std::cout << "Character destructor" << std::endl;
-    // for (int i = 0; i < 4; i++)
-    //     if (_inventory[i] != NULL)
-            // delete _inventory[i];
+    for (int i = 0; i < 4; i++){
+        // std::cout << "Entrou" << std::endl;
+        if (_inventory[i] != NULL){
+            delete _inventory[i];
+        }
+    }
 }
 
 std::string const & Character::getName() const {
@@ -56,6 +59,11 @@ std::string const & Character::getName() const {
 }
 
 void Character::equip(AMateria* m){
+    if (!m){
+        std::cout << "Null materia, something is wrong" << std::endl;
+        return ;
+    }
+
     for (int i = 0; i < 4; i++){
         if (_inventory[i] == NULL){
             _inventory[i] = m;
@@ -85,6 +93,7 @@ void Character::use(int idx, ICharacter& target){
     else {
         if (_inventory[idx] != NULL){
             std::cout << _name << " used " << _inventory[idx]->getType() << " in " << target.getName() << std::endl;
+            delete _inventory[idx];
             _inventory[idx] = NULL;
         }
         else

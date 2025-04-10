@@ -56,7 +56,9 @@ AMateria*   MateriaSource::createMateria(std::string const & type){
     for (int i = 0; i < 4; i++)
         if (_inventory[i] != NULL && _inventory[i]->getType() == type){
             std::cout << "Creating a new materia with type: " << type << std::endl;
-            return _inventory[i]->clone();
+            AMateria *newMateria = _inventory[i]->clone();
+            
+            return newMateria;
         }
     std::cout << "Unkown type, please add it to the materia source" << std::endl;
     return NULL;
