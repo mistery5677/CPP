@@ -7,50 +7,106 @@ Character::Character(): _name("Default"){
     // std::cout << "Character default constructor called" << std::endl;
     for (int i = 0; i < 4; i++)
         _inventory[i] = NULL;
+    _floor = NULL;
+    // _floor->materia = NULL;
+    // _floor->next = NULL;
 }
 
 Character::Character(std::string name): _name(name){
     // std::cout << "Character default constructor called" << std::endl;
     for (int i = 0; i < 4; i++)
         _inventory[i] = NULL;
+    _floor = NULL;
 }
 
-Character::Character(const Character& copy){
-    // std::cout << "Character copy constructor called" << std::endl;
-    for(int i = 0; i < 4; i++)
-	{
-		if ((copy._inventory)[i])
-			(this->_inventory)[i] = (copy._inventory[i])->clone();
-	}
+Character::Character(const Character& copy): _name(copy._name), _floor(NULL) {
+    for (int i = 0; i < 4; i++) {
+        if (copy._inventory[i])
+            this->_inventory[i] = copy._inventory[i]->clone();
+        else
+            this->_inventory[i] = NULL;
+    }
+
+    Floor* srcCurrent = copy._floor;
+    Floor* prev = NULL;
+    while (srcCurrent) {
+        Floor* newNode = new Floor;
+        newNode->materia = srcCurrent->materia->clone();  // deep copy
+        newNode->next = NULL;
+
+        if (!_floor)
+            _floor = newNode;
+        else
+            prev->next = newNode;
+
+        prev = newNode;
+        srcCurrent = srcCurrent->next;
+    }
 }
 
-Character& Character::operator=(const Character& src){
-    // std::cout << "Character equal operator called" << std::endl;
-    if (this != &src) { 
+
+Character& Character::operator=(const Character& src) {
+    if (this != &src) {
         this->_name = src._name;
 
         for (int i = 0; i < 4; ++i) {
-            if (this->_inventory[i]){
-                // delete this->_inventory[i];
+            if (this->_inventory[i]) {
+                delete this->_inventory[i];
                 this->_inventory[i] = NULL;
             }
-
             if (src._inventory[i])
                 this->_inventory[i] = src._inventory[i]->clone();
             else
                 this->_inventory[i] = NULL;
         }
+
+        Floor* current = this->_floor;
+        while (current != NULL) {
+            Floor* next = current->next;
+            delete current->materia;
+            delete current;
+            current = next;
+        }
+        this->_floor = NULL;
+
+        Floor* srcCurrent = src._floor;
+        Floor* prev = NULL;
+        while (srcCurrent) {
+            Floor* newNode = new Floor;
+            newNode->materia = srcCurrent->materia->clone(); // deep copy!
+            newNode->next = NULL;
+
+            if (!this->_floor)
+                this->_floor = newNode;
+            else
+                prev->next = newNode;
+
+            prev = newNode;
+            srcCurrent = srcCurrent->next;
+        }
     }
     return *this;
 }
 
+
 Character::~Character(){
     // std::cout << "Character destructor" << std::endl;
     for (int i = 0; i < 4; i++){
-        // std::cout << "Entrou" << std::endl;
         if (_inventory[i] != NULL){
             delete _inventory[i];
         }
+    }
+    
+    Floor* current;
+    if (this->_floor == NULL)
+    current = NULL;
+    else
+        current = this->_floor;
+    while (current != NULL) {
+        delete current->materia;
+        Floor* next = current->next;
+        delete current;
+        current = next;
     }
 }
 
@@ -63,7 +119,12 @@ void Character::equip(AMateria* m){
         std::cout << "Null materia, something is wrong" << std::endl;
         return ;
     }
-
+    for (int x = 0; x < 4; x++){
+        if (_inventory[x] != NULL && m == _inventory[x]){
+            std::cout << "That materia is already equiped in space: " << x << std::endl;
+            return ;
+        }
+    }
     for (int i = 0; i < 4; i++){
         if (_inventory[i] == NULL){
             _inventory[i] = m;
@@ -79,6 +140,10 @@ void Character::unequip(int idx){
         std::cout << "Type a valid idx, from 0 - 3" << std::endl;
     else {
         if (_inventory[idx] != NULL){
+            Floor* node = new Floor;
+            node->materia = _inventory[idx];
+            node->next = _floor;
+            _floor = node;
             std::cout << "Unequiping the materia number " << idx << " type: " << _inventory[idx]->getType() << std::endl;
             _inventory[idx] = NULL;
         }
@@ -90,14 +155,10 @@ void Character::unequip(int idx){
 void Character::use(int idx, ICharacter& target){
     if (idx < 0 || idx > 3)
         std::cout << "Type a valid idx to use, from 0 - 3" << std::endl;
+    else if (_inventory[idx] == NULL)
+        std::cout << "Space empty, please equip AMateria" << std::endl;
     else {
-        if (_inventory[idx] != NULL){
-            std::cout << _name << " used " << _inventory[idx]->getType() << " in " << target.getName() << std::endl;
-            delete _inventory[idx];
-            _inventory[idx] = NULL;
-        }
-        else
-            std::cout << "Space empty, please equip AMateria" << std::endl;
+        this->_inventory[idx]->use(target);
     }
 }
 

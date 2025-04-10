@@ -7,6 +7,11 @@ class Character: public ICharacter{
     private:
         std::string _name;
         AMateria    *_inventory[4];
+        struct Floor {
+            AMateria* materia;
+            Floor* next;
+        };
+        Floor* _floor;
     public:
         Character();
         Character(std::string name);
