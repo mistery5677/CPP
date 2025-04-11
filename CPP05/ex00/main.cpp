@@ -41,4 +41,12 @@ int main(){
         std::cout << "Error: " << msg.what() << std::endl;
     }
 
+    std::cout << "\n*********TESTING OVERLOADING INSERTION (<<)**********\n" << std::endl;
+    Bureaucrat jorge("Jorge", 10);
+    std::cout << jorge;
+    jorge.decreaseGrade();
+    std::cout << jorge;
+    jorge.increaseGrade();
+    std::cout << jorge;
+
 }

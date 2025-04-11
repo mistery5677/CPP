@@ -16,7 +16,7 @@ class Bureaucrat {
         int                     getGrade() const;
         void                    increaseGrade();
         void                    decreaseGrade();
-        friend std::ostream&    operator<<(std::ostream& output, const Bureaucrat& dt);
+        friend std::ostream&    operator<<(std::ostream& output, const Bureaucrat& bureaucrat);
 
         class GradeTooHighException: public std::exception{
             public:
