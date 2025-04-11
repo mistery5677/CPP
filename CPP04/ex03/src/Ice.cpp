@@ -11,7 +11,7 @@ Ice::Ice(std::string type){
 }
 
 Ice::Ice(const Ice &copy): AMateria(){
-    // std::cout << "Ice --> _type " << _type << " coppyng information" << std::endl;
+    // std::cout << "Ice --> _type " << _type << " copying information" << std::endl;
     this->_type = copy._type;
 }
 

@@ -1,16 +1,20 @@
 #include <string>
 #include <iostream>
+#include <sstream>
 #include "../include/Brain.hpp"
 
 Brain::Brain() {
     _ideas = new std::string[100];
-    _ideas[0] = "hello world";
-    _ideas[10] = "42 lisboa";
+    for (int i = 0; i < 100; i++){
+        std::stringstream ss;
+        ss << "Idea Number: " << i;
+        _ideas[i] = ss.str();
+    }
     std::cout << "Brain default constructor" << std::endl;
 }
 
 Brain::Brain(const Brain &copy){
-    std::cout << "Brain -->" << " coppyng information" << std::endl;
+    std::cout << "Brain -->" << " copying information" << std::endl;
     this->_ideas = copy._ideas;
 }
 

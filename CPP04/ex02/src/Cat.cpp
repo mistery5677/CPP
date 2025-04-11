@@ -16,7 +16,7 @@ Cat::Cat(std::string type){
 Cat::Cat(const Cat &copy): Animal(copy){
     this->_catType = copy._catType;
     this->_catBrain = new Brain(*copy._catBrain);
-    std::cout << "Cat --> _type " << _catType << " coppyng information" << std::endl;
+    std::cout << "Cat --> _type " << _catType << " copying information" << std::endl;
 }
 
 Cat& Cat::operator=(const Cat &src){

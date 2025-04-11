@@ -11,7 +11,7 @@ AMateria::AMateria(std::string const & type): _type(type){
 
 AMateria::AMateria(const AMateria &copy){
     this->_type = copy._type;
-    // std::cout << "AMateria --> _type " << _type << " coppyng information" << std::endl;
+    // std::cout << "AMateria --> _type " << _type << " copying information" << std::endl;
 }
 
 AMateria& AMateria::operator=(const AMateria &src){

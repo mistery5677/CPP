@@ -12,7 +12,8 @@ Cat::Cat(std::string type){
 }
 
 Cat::Cat(const Cat &copy): Animal(copy){
-    std::cout << "Cat --> _type " << _type << " coppyng information" << std::endl;
+    this->_catType = copy._catType;
+    std::cout << "Cat --> _type " << _type << " copying information" << std::endl;
 }
 
 Cat& Cat::operator=(const Cat &src){

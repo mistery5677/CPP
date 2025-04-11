@@ -13,7 +13,7 @@ WrongAnimal::WrongAnimal(std::string type){
 
 WrongAnimal::WrongAnimal(const WrongAnimal &copy){
     this->_type = copy._type;
-    std::cout << "WrongAnimal --> _type " << _type << " coppyng information" << std::endl;
+    std::cout << "WrongAnimal --> _type " << _type << " copying information" << std::endl;
 }
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal &src){

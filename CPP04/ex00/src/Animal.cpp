@@ -13,7 +13,7 @@ Animal::Animal(std::string type){
 
 Animal::Animal(const Animal &copy){
     this->_type = copy._type;
-    std::cout << "Animal --> _type " << _type << " coppyng information" << std::endl;
+    std::cout << "Animal --> _type " << _type << " copying information" << std::endl;
 }
 
 Animal& Animal::operator=(const Animal &src){

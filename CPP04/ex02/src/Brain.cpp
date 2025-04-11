@@ -10,7 +10,7 @@ Brain::Brain() {
 }
 
 Brain::Brain(const Brain &copy){
-    std::cout << "Brain -->" << " coppyng information" << std::endl;
+    std::cout << "Brain -->" << " copying information" << std::endl;
     this->_ideas = copy._ideas;
 }
 

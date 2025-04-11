@@ -11,7 +11,7 @@ Cure::Cure(std::string type){
 }
 
 Cure::Cure(const Cure &copy): AMateria(){
-    // std::cout << "Cure --> _type " << _type << " coppyng information" << std::endl;
+    // std::cout << "Cure --> _type " << _type << " copying information" << std::endl;
     this->_type = copy._type;
 }
 

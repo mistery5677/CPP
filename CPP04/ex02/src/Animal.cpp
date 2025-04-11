@@ -12,19 +12,21 @@ Animal::Animal(std::string type){
 }
 
 Animal::Animal(const Animal &copy){
-    std::cout << "Animal --> _type " << _type << " coppyng information" << std::endl;
     this->_type = copy._type;
+    std::cout << "Animal --> _type " << _type << " copying information" << std::endl;
 }
 
 Animal& Animal::operator=(const Animal &src){
-    std::cout << "Animal --> _type " << _type << " its overloading the = operator" << std::endl;
     this->_type = src._type;
+    std::cout << "Animal --> _type " << _type << " its overloading the = operator" << std::endl;
     return *this;
 }
 
 Animal::~Animal(){
     std::cout << "Animal " << _type << " got destroyed" << std::endl;
 }
+
+// Ex02 --> We remove this functions, because the class is virtual
 
 // void Animal::makeSound() const{
 //     std::cout << "Animal --> You have to specify which animal you want to make the sound" << std::endl;

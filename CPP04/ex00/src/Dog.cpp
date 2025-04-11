@@ -12,7 +12,8 @@ Dog::Dog(std::string type){
 }
 
 Dog::Dog(const Dog &copy): Animal(copy){
-    std::cout << "Dog --> _type " << _type << " coppyng information" << std::endl;
+    this->_dogType = copy._dogType;
+    std::cout << "Dog --> _type " << _type << " copying information" << std::endl;
 }
 
 Dog& Dog::operator=(const Dog &src){

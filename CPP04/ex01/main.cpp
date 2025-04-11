@@ -31,7 +31,7 @@ int main()
     const Animal* persian = new Cat("Persian");
 
     std::cout << "The dog with type " << doberman->getType() << " have the thought: " << doberman->getIdea(0) << std::endl;
-    std::cout << "The cat with type " << persian->getType() << " have the thought: " << persian->getIdea(0) << std::endl;
+    std::cout << "The cat with type " << persian->getType() << " have the thought: " << persian->getIdea(10) << std::endl;
 
     persian->makeSound();
     doberman->makeSound();
