@@ -37,6 +37,17 @@ int	Form::getExecuteGrade() const{
 	return _executeGrade;
 }
 
+void	Form::beSigned(Bureaucrat& bureaucrat){
+	if (this->_signed == true)
+		std::cout << "Form " << this->_name << " is already signed" << std::endl;
+	else if (bureaucrat.getGrade() <= this->_signGrade){
+		std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
+		this->_signed = true;
+	}
+	else
+		throw Form::GradeTooLowException();
+}
+
 const char* Form::GradeTooHighException::what() const throw() {
     return "Form is too high!";
 }

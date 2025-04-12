@@ -1,7 +1,10 @@
 #pragma once
+#include "Form.hpp"
 #include <string>
 #include <exception>
 #include <iostream>
+
+class Form;
 
 class Bureaucrat {
     private:
@@ -27,4 +30,7 @@ class Bureaucrat {
             public:
                 const char* what() const throw();
         };
+
+        /////////// PART 2 //////////
+        void    signForm(Form& form);
 };
