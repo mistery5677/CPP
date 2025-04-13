@@ -1,10 +1,10 @@
 #pragma once
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <string>
 #include <exception>
 #include <iostream>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
     private:
@@ -32,5 +32,5 @@ class Bureaucrat {
         };
 
         /////////// PART 2 //////////
-        void    signForm(Form& form);
+        void    signForm(AForm& form);
 };

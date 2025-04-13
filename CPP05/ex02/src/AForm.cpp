@@ -7,8 +7,9 @@ AForm::AForm(): _name("default"),
 	_executeGrade(100){
 }
 
-AForm::AForm(std::string name, int const sign, int const execute): 
+AForm::AForm(std::string name, std::string target, int const sign, int const execute): 
 	_name(name),
+	_target(target),
 	_signed(false),
 	_signGrade(sign),
 	_executeGrade(execute){
@@ -23,6 +24,10 @@ AForm::~AForm(){
 
 std::string const	AForm::getName() const{
 	return _name;
+}
+
+std::string const	AForm::getTarget() const{
+	return _target;
 }
 
 bool	AForm::getSigned() const{
@@ -48,11 +53,22 @@ void	AForm::beSigned(Bureaucrat& bureaucrat){
 		throw AForm::GradeTooLowException();
 }
 
+void AForm::execute(Bureaucrat const & executor){
+	if (this->_signed == false)
+		throw{
+
+	}
+}
+
 const char* AForm::GradeTooHighException::what() const throw() {
     return "Form is too high!";
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {
+    return "Form is too low!";
+}
+
+const char* AForm::UnsignedForm::what() const throw() {
     return "Form is too low!";
 }
 

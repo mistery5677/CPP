@@ -53,7 +53,7 @@ std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureaucrat){
 }
 
 //////////// PART 2 ////////////
-void    Bureaucrat::signForm(Form& form){
+void    Bureaucrat::signForm(AForm& form){
     try {
         form.beSigned(*this);
         if (!form.getSigned())

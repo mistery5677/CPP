@@ -1,9 +1,19 @@
 #pragma once
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
+#include <exception>
 
 class ShrubberyCreationForm: public AForm {
     private:
-        std::string _name;
-        int const   _signGrade;
-        int const   _executeGrade;
-}
+
+    public:
+        ShrubberyCreationForm();
+        ShrubberyCreationForm(std::string target);
+        ~ShrubberyCreationForm();
+        void execute(Bureaucrat const & executor);
+
+        class EmptyTarget: public std::exception{
+            public:
+                const char* what() const throw();
+        };
+};
