@@ -3,13 +3,13 @@
 #include "Bureaucrat.hpp"
 #include <exception>
 
-class ShrubberyCreationForm: public AForm {
+class RobotomyRequestForm: public AForm {
     private:
 
     public:
-        ShrubberyCreationForm();
-        ShrubberyCreationForm(std::string target);
-        ~ShrubberyCreationForm();
+        RobotomyRequestForm();
+        RobotomyRequestForm(std::string target);
+        ~RobotomyRequestForm();
         void executeForm() const ;
 
         class EmptyTarget: public std::exception{

@@ -1,9 +1,10 @@
 #include "../include/ShrubberyCreationForm.hpp"
 #include <iostream>
+#include <fstream>
 
 
 ShrubberyCreationForm::ShrubberyCreationForm(): 
-    AForm("Shrubbery_form", "empty", 145, 137){
+    AForm("Shrubbery_form", "", 145, 137){
     throw ShrubberyCreationForm::EmptyTarget();
 }
 
@@ -16,9 +17,18 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target):
 ShrubberyCreationForm::~ShrubberyCreationForm(){
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor){
-    (void) executor;
-    std::cout << "Executei a funcao execute" << std::endl;
+void ShrubberyCreationForm::executeForm() const {
+    std::ofstream file((getTarget() + "_shrubbery").c_str());
+    file << "       _-_" << std::endl;
+    file << "    /~~   ~~\\" << std::endl;
+    file << " /~~         ~~\\" << std::endl;
+    file << "{               }" << std::endl;
+    file << " \\  _-     -_  /" << std::endl;
+    file << "   ~  \\\\ //  ~" << std::endl;
+    file << "_- -   | | _- _" << std::endl;
+    file << "  _ -  | |   -_" << std::endl;
+    file << "      // \\\\" << std::endl;
+    file.close();
 }
 
 const char* ShrubberyCreationForm::EmptyTarget::what() const throw() {

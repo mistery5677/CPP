@@ -35,6 +35,6 @@ class Form {
                 const char* what() const throw();
         };
 
-		//Overload insertion
-		friend std::ostream& operator<<(std::ostream& output, const Form& form);
 };
+//Overload insertion
+std::ostream& operator<<(std::ostream& output, const Form& form);

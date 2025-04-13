@@ -27,7 +27,7 @@ class AForm {
 		void				beSigned(Bureaucrat& bureaucrat);
 		
 		////////// PART 3 /////////
-		virtual void	executeForm() = 0;
+		virtual void	executeForm() const = 0;
 		void			execute(Bureaucrat const & executor);
 
 		//Throw execptions
@@ -39,16 +39,11 @@ class AForm {
             public:
                 const char* what() const throw();
         };
-		class GradeTooHighException: public std::exception{
-            public:
-                const char* what() const throw();
-        };
         class UnsignedForm: public std::exception {
             public:
                 const char* what() const throw();
         };
 
-		//Overload insertion
-		friend std::ostream& operator<<(std::ostream& output, const AForm& form);
-
 };
+//Overload insertion
+std::ostream& operator<<(std::ostream& output, const AForm& form);
