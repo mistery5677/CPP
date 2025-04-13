@@ -51,6 +51,10 @@ int main(){
 	try {
 		Bureaucrat miguel("Miguel", 10);
 		Form form("test", 10, 120);
+		miguel.decreaseGrade();
+		miguel.signForm(form);
+		miguel.increaseGrade();
+		miguel.increaseGrade();
 		miguel.signForm(form);
 		miguel.signForm(form);
 	} catch (std::exception &msg) {
