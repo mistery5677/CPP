@@ -1,6 +1,6 @@
 #include "../include/ScalarConverter.hpp"
-#include <iostream"
+#include <iostream>
 
-void ScalarConverter::convert(std::string& value){
-    std::cout << "Original value: " << value << std::endl;
+void ScalarConverter::convert(const std::string& literal){
+    std::cout << "Original value: " << literal << std::endl;
 }

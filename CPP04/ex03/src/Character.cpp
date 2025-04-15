@@ -1,15 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/15 11:18:22 by miafonso          #+#    #+#             */
+/*   Updated: 2025/04/15 11:18:22 by miafonso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/Character.hpp"
 #include <iostream>
 #include <iostream>
 #include <string>
 
 Character::Character(): _name("Default"){
-    // std::cout << "Character default constructor called" << std::endl;
     for (int i = 0; i < 4; i++)
         _inventory[i] = NULL;
     _floor = NULL;
-    // _floor->materia = NULL;
-    // _floor->next = NULL;
+	std::cout << "Created default character" << std::endl;
 }
 
 Character::Character(std::string name): _name(name){
@@ -17,6 +27,7 @@ Character::Character(std::string name): _name(name){
     for (int i = 0; i < 4; i++)
         _inventory[i] = NULL;
     _floor = NULL;
+	std::cout << "Created " << name << " character" << std::endl;
 }
 
 Character::Character(const Character& copy): _name(copy._name), _floor(NULL) {
