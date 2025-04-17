@@ -1,9 +1,9 @@
-NAME = Intern
+NAME = convert
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
-SRCS = main.cpp src/ScalarConverter.cpp
+SRCS = main.cpp src/ScalarConverter.cpp src/ConverterUtils.cpp
 OBJS = $(SRCS:.cpp=.o) 
 
 all: $(NAME)

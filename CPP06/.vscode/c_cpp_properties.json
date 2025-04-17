@@ -1,0 +1,18 @@
+{
+    "configurations": [
+      {
+        "name": "WSL",
+        "intelliSenseMode": "linux-gcc-x64",
+        "compilerPath": "/usr/bin/g++",
+        "cStandard": "c89",
+        "cppStandard": "c++98",
+        "includePath": [
+          "${workspaceFolder}/include",
+          "/usr/include",
+          "/usr/local/include"
+        ]
+      }
+    ],
+    "version": 4
+  }
+  
