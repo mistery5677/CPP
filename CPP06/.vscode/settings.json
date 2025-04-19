@@ -44,7 +44,8 @@
       "ostream": "cpp",
       "stdexcept": "cpp",
       "streambuf": "cpp",
-      "typeinfo": "cpp"
+      "typeinfo": "cpp",
+      "sstream": "cpp"
     },
     "C_Cpp.default.cppStandard": "c++98",
     "C_Cpp.default.intelliSenseMode": "linux-gcc-x64"

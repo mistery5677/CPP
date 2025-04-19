@@ -13,7 +13,9 @@ bool isInt(const std::string& literal){
 
     if (literal[i] == '-' || literal[i] == '+')
         i++;
-
+    
+    if (!literal[i])
+        return false;
     for (i = i; literal[i]; i++)
         if (literal[i] < '0' || literal[i] > '9')
             return false;
@@ -97,7 +99,12 @@ void charType(const std::string& literal){
 }
 
 void intType(const std::string& literal){
-    float   toFloat = std::atof(literal.c_str());
+    std::string copy = literal;
+    for (int i = 0; literal[i]; i++)
+        if (literal[i] == ',')
+            copy[i] = '.';
+
+    float   toFloat = std::atof(copy.c_str());
     int     toInt = std::atoi(literal.c_str());
     char    toChar = toInt;
 
@@ -118,8 +125,17 @@ void intType(const std::string& literal){
     }
     else{
         std::cout << "Int: " << toInt << std::endl;
-        std::cout << "Float: " << toFloat << "f" << std::endl;
-        std::cout << "Double: " << toFloat << std::endl;
+
+        float result = toFloat - toInt;
+        if (result != 0)
+            std::cout << "Float: " << toFloat << "f" << std::endl;
+        else
+            std::cout << "Float: " << toFloat << ".0f" << std::endl;
+
+        if (result != 0)
+            std::cout << "Double: " << toFloat << std::endl;
+        else
+            std::cout << "Float: " << toFloat << ".0" << std::endl;
     }
 }
 
