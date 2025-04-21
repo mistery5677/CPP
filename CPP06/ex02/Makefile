@@ -1,9 +1,9 @@
-NAME = convert
+NAME = base
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
-SRCS = main.cpp src/ScalarConverter.cpp src/ConverterUtils.cpp
+SRCS = main.cpp src/A.cpp src/B.cpp src/C.cpp src/Base.cpp
 OBJS = $(SRCS:.cpp=.o) 
 
 all: $(NAME)
