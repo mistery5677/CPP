@@ -18,6 +18,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(){
 }
 
 void ShrubberyCreationForm::executeForm() const {
+	std::cout << "Planted a tree 🌳" << std::endl;
     std::ofstream file((getTarget() + "_shrubbery").c_str());
     file << "       _-_" << std::endl;
     file << "    /~~   ~~\\" << std::endl;

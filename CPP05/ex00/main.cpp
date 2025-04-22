@@ -30,7 +30,7 @@ int main(){
         std::cout << "Error: " << msg.what() << std::endl;
     }
 
-    std::cout << "\n*********TESTING INCREASEGRADE**********\n" << std::endl;
+    std::cout << "\n*********TESTING DECREASEGRADE**********\n" << std::endl;
     try {
         Bureaucrat miguel = Bureaucrat("Lucas", 148);
         miguel.decreaseGrade();

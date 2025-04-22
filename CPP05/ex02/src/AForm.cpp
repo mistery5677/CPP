@@ -70,7 +70,7 @@ const char* AForm::GradeTooLowException::what() const throw() {
 }
 
 const char* AForm::UnsignedForm::what() const throw() {
-    return "Form is too low!";
+    return "Form is not signed";
 }
 
 std::ostream& operator<<(std::ostream& output, const AForm& aform){

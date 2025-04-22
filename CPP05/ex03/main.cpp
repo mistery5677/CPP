@@ -21,8 +21,6 @@ int main() {
     rrf = someRandomIntern.makeForm("robotomy request", "Bender");
     pp = someRandomIntern.makeForm("presidential pardon", "Prison");
     shrubbery = someRandomIntern.makeForm("shrubbery creation", "Garden");
-
-    std::cout  << shrubbery->getName() << std::endl;
     
     std::cout << "\033[31m";
     std::cout << "\n******************************************";
@@ -55,10 +53,10 @@ int main() {
         std::cout << "ERROR:" << msg.what() << std::endl;
     }
 
-
     delete rrf;
     delete pp;
     delete shrubbery;
     delete error;
     delete error2;
+	delete miguel;
 }
