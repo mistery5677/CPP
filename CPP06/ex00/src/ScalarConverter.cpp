@@ -6,6 +6,14 @@ void charType(const std::string& literal);
 void intType(const std::string& literal);
 void specialType();
 
+ScalarConverter::ScalarConverter(){}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& copy){}
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& src){}
+
+ScalarConverter::~ScalarConverter(){}
+
 void ScalarConverter::convert(const std::string& literal){
     int type = getType(literal);
     switch (type){
