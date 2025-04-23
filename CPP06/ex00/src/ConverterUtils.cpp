@@ -168,7 +168,7 @@ void intType(const std::string& literal){
         if (result != 0)
             std::cout << "Double: " << toFloat << std::endl;
         else
-            std::cout << "Float: " << toFloat << ".0" << std::endl;
+            std::cout << "Double: " << toFloat << ".0" << std::endl;
     }
 }
 
