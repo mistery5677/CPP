@@ -1,16 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/23 14:28:16 by miafonso          #+#    #+#             */
+/*   Updated: 2025/04/23 14:28:16 by miafonso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/ScalarConverter.hpp"
 #include <iostream>
 
 int getType(const std::string& literal);
 void charType(const std::string& literal);
 void intType(const std::string& literal);
-void specialType();
+void specialTypeNan();
+void specialTypeInf(const std::string& literal);
+
 
 ScalarConverter::ScalarConverter(){}
 
-ScalarConverter::ScalarConverter(const ScalarConverter& copy){}
+ScalarConverter::ScalarConverter(const ScalarConverter& copy){
+	(void)copy;
+}
 
-ScalarConverter& ScalarConverter::operator=(const ScalarConverter& src){}
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& src){
+	(void)src;
+	return *this;
+}
 
 ScalarConverter::~ScalarConverter(){}
 
@@ -34,8 +53,11 @@ void ScalarConverter::convert(const std::string& literal){
             intType(literal);
             break;
         case SPECIAL:
+			if (literal == "nan" || literal == "nanf")
+            	specialTypeNan();
+			else
+				specialTypeInf(literal);
             // std::cout << "Its a special type" << std::endl;
-            specialType();
             break;
         default:
             std::cout << "Unknown type" << std::endl;

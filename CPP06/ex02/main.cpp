@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/23 14:28:49 by miafonso          #+#    #+#             */
+/*   Updated: 2025/04/23 14:28:50 by miafonso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "include/A.hpp"
 #include "include/B.hpp"
 #include "include/C.hpp"
@@ -10,4 +22,5 @@ int main(){
 
     Base::identify(test);
     Base::identify(ref);
+	delete test;
 }

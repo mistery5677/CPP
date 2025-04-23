@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/23 14:28:11 by miafonso          #+#    #+#             */
+/*   Updated: 2025/04/23 14:28:11 by miafonso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 #include <string>
 #define CHAR 0
@@ -11,7 +23,6 @@ class ScalarConverter{
 
     public:
 		ScalarConverter();
-        ScalarConverter();
         ScalarConverter(const ScalarConverter& copy);
         ScalarConverter& operator=(const ScalarConverter &src);
         ~ScalarConverter();

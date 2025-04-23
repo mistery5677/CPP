@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ConverterUtils.cpp                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/23 14:28:14 by miafonso          #+#    #+#             */
+/*   Updated: 2025/04/23 14:28:14 by miafonso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <cstdlib>
 #include <climits>
@@ -16,23 +28,26 @@ bool isInt(const std::string& literal){
     
     if (!literal[i])
         return false;
-    for (i = i; literal[i]; i++)
-        if (literal[i] < '0' || literal[i] > '9')
+    for (int x = i; literal[x]; x++){
+        if (literal[x] < '0' || literal[x] > '9')
             return false;
+		i++;
+	}
     return true;
 }
 
 bool isFloat(const std::string& literal){
     int i = 0;
-
     ///////////// CHECKS THE FIRST BITS ////////////
     
     if (literal[i] == '-' || literal[i] == '+')
         i++;
 
-    for (i = i; literal[i]; i++)
-        if (literal[i] < '0' || literal[i] > '9')
+    for (int x = i; literal[x]; x++){
+        if (literal[x] < '0' || literal[x] > '9')
             break;
+		i++;
+	}
     
     //////////// SKIPS THE DOT ////////////
 
@@ -42,9 +57,11 @@ bool isFloat(const std::string& literal){
 
     //////////// CHECKS THE SECOND BITS ///////////
     
-    for (i = i; literal[i]; i++)
-        if (literal[i] < '0' || literal[i] > '9')
+    for (int x = i; literal[x]; x++){
+        if (literal[x] < '0' || literal[x] > '9')
             break ;
+		i++;
+	}
     
     if (literal[i] == 'f' && !literal[i + 1])
         return true;
@@ -59,10 +76,11 @@ bool isDouble(const std::string& literal){
     if (literal[i] == '-' || literal[i] == '+')
         i++;
 
-    for (i = i; literal[i]; i++)
-        if (literal[i] < '0' || literal[i] > '9')
+    for (int x = i; literal[x]; x++){
+        if (literal[x] < '0' || literal[x] > '9')
             break;
-    
+		i++;
+	}
     //////////// SKIPS THE DOT ////////////
 
     if (literal[i] != ',')
@@ -71,9 +89,11 @@ bool isDouble(const std::string& literal){
 
     //////////// CHECKS THE SECOND BITS ///////////
     
-    for (i = i; literal[i]; i++)
-        if (literal[i] < '0' || literal[i] > '9')
+    for (int x = i; literal[x]; x++){
+        if (literal[x] < '0' || literal[x] > '9')
             return false;
+		i++;
+	}
     return true;
 }
 
@@ -84,7 +104,20 @@ bool isSpecial(const std::string& literal){
     return false;
 }
 
-void specialType(){
+void specialTypeInf(const std::string& literal){
+    std::cout << "char: " << "impossible" << std::endl;
+    std::cout << "Int: " << "impossible" << std::endl;
+	if (literal[0] == '-'){
+    	std::cout << "Float: " << "-inff" << std::endl;
+    	std::cout << "Double: " << "-inf" << std::endl;
+	}
+	else{
+		std::cout << "Float: " << "+inff" << std::endl;
+    	std::cout << "Double: " << "+inf" << std::endl;
+	}
+}
+
+void specialTypeNan(){
     std::cout << "char: " << "impossible" << std::endl;
     std::cout << "Int: " << "impossible" << std::endl;
     std::cout << "Float: " << "nanf" << std::endl;
