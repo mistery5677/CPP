@@ -1,5 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mistery576 <mistery576@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/23 21:46:48 by mistery576        #+#    #+#             */
+/*   Updated: 2025/04/23 21:46:50 by mistery576       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "include/Array.hpp"
+#include "src/Array.tpp"
+#include <cstdlib>
 
 
 int main(){
@@ -77,7 +91,7 @@ int main(){
 //         Array<int> tmp = numbers;
 //         Array<int> test(tmp);
 //     }
-
+    
 //     for (int i = 0; i < MAX_VAL; i++)
 //     {
 //         if (mirror[i] != numbers[i])
@@ -107,6 +121,6 @@ int main(){
 //     {
 //         numbers[i] = rand();
 //     }
-//     delete [] mirror;//
+//     delete [] mirror;
 //     return 0;
 // }
