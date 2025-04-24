@@ -9,9 +9,10 @@ class Span{
     public:
         Span();
         Span(unsigned int n);
+        ~Span();
 
-        unsigned int     shortestSpan();
-        unsigned int     longestSpan();
+        long     shortestSpan();
+        long     longestSpan();
         void    addNumber(int number);
         void    getNumbers();
 };

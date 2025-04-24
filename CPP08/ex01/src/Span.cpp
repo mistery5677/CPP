@@ -14,6 +14,10 @@ Span::Span(unsigned int n){
     _size = n;
 }
 
+Span::~Span(){
+    delete[] _container;
+}
+
 // template <typename N>
 void Span::addNumber(int number){
     unsigned int i = 0;
@@ -33,24 +37,24 @@ void Span::getNumbers(){
         std::cout << "Container[" << i << "] = " << this->_container[i] << std::endl;
 }
 
-unsigned int Span::shortestSpan(){
-    int shortSpan = 0;
-
+long Span::shortestSpan(){
     if (this->_size <= 1)
         throw std::runtime_error("Not enough numbers inside the container\n");
 
-    int* copy = new int(this->_size);
-    for (int i = 0; i < this->_size; i++)
+    int* copy = new int[this->_size];
+    for (unsigned int i = 0; i < this->_size; i++)
         copy[i] = this->_container[i];
     
     //SORT CONTAINER;
     std::sort(copy, copy + this->_size);
 
     //Choose the short combination
-    unsigned int shortNumber = copy[1] - copy[0];
-    for (int i = 1; i < this->_size; i++){
-        unsigned int result = copy[i] - copy[i - 1];
-
+    long shortNumber = copy[1] - copy[0];
+    if (shortNumber < 0)
+        shortNumber *= -1;
+    for (unsigned int i = 1; i < this->_size; i++){
+        long result = copy[i] - copy[i - 1];
+    
         if (result < shortNumber)
             shortNumber = result;
     }
@@ -58,15 +62,19 @@ unsigned int Span::shortestSpan(){
     return shortNumber;
 }
 
-unsigned int Span::longestSpan(){
+long Span::longestSpan(){
     if (this->_size <= 1)
         throw std::runtime_error("Not enough numbers inside the container\n");
 
-    int* copy = new int(this->_size);
-    for (int i = 0; i < this->_size; i++)
+    int* copy = new int[this->_size];
+    for (unsigned int i = 0; i < this->_size; i++)
         copy[i] = this->_container[i];
     
     //SORT CONTAINER;
     std::sort(copy, copy + this->_size);
-    return copy[this->_size - 1] - copy[0]; 
+    
+    long longestDistance = copy[this->_size -1] - copy[0];
+    delete[] copy;
+    
+    return longestDistance;
 }

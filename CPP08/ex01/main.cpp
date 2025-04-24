@@ -33,13 +33,13 @@ int main(){
     sp.getNumbers();
 
     std::cout << "\033[1;32m";
-    std::cout << "\n*******TESTING 10000 numbers*******\n" << std::endl;
+    std::cout << "\n*******TESTING 10000 NUMBERS*******\n" << std::endl;
     std::cout << "\033[1;0m";
 
-    Span sp2 = Span(100000);
+    Span sp2 = Span(10000);
     srand(time(0));
-    for (int i = 0; i < 100000; i++)
-        sp2.addNumber(rand() % 100000);
+    for (int i = 0; i < 10000; i++)
+        sp2.addNumber(rand() % 10000);
     std::cout << sp2.shortestSpan() << std::endl;
     std::cout << sp2.longestSpan() << std::endl;
 }
