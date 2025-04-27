@@ -6,7 +6,7 @@
 /*   By: mistery576 <mistery576@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 21:46:46 by mistery576        #+#    #+#             */
-/*   Updated: 2025/04/23 21:46:47 by mistery576       ###   ########.fr       */
+/*   Updated: 2025/04/27 15:34:07 by mistery576       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,22 @@ Array<T>::Array(unsigned int n): _size(n){
 
 template<typename T>
 Array<T>::Array(Array<T>& copy){
-    this->_data = new T[copy.size()]();
     this->_size = copy._size;
-
-    for(int i = 0; i < this->_size; i++)
-        this->_data[i] = copy._data[i];
+    this->_data = NULL;
+    *this = copy;
 }
 
 template<typename T>
 Array<T>& Array<T>::operator=(Array<T>& src){
     if (this->_data != NULL)
         delete[] this->_data;
-    this->_data = new T[src.size()]();
-    this->_size = src._size;
-    for(int i = 0; src._data[i]; i++)
-        this->_data[i] = src._data[i];
-    return this;
+    if(src.size() != 0){
+        this->_data = new T[src.size()]();
+        this->_size = src._size;
+        for(int i = 0; i < src.size(); i++)
+            this->_data[i] = src._data[i];
+    }
+    return *this;
 }
 
 template<typename T>
