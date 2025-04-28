@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mistery576 <mistery576@student.42.fr>      +#+  +:+       +#+        */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 21:46:46 by mistery576        #+#    #+#             */
-/*   Updated: 2025/04/27 15:34:07 by mistery576       ###   ########.fr       */
+/*   Updated: 2025/04/28 10:52:58 by miafonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ Array<T>::Array(): _size(0){
 
 template<typename T>
 Array<T>::Array(unsigned int n): _size(n){
-
     _data = new T[n]();
 }
 
 template<typename T>
 Array<T>::Array(Array<T>& copy){
     this->_size = copy._size;
-    this->_data = NULL;
-    *this = copy;
+    this->_data = new T[this->_size];
+    for (int i = 0; i < this->_size; ++i)
+        this->_data[i] = copy._data[i];
 }
 
 template<typename T>
