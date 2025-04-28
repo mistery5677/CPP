@@ -1,5 +1,6 @@
 #include "include/BitcoinExchange.hpp"
 #include <iostream>
+#include <exception>
 
 int main(int argc, char **argv){
     (void)argv;
@@ -12,13 +13,11 @@ int main(int argc, char **argv){
     std::cout << "*******TESTING DEFAULT CONSTRUCTOR*******\n" << std::endl;
     std::cout << "\033[1;0m";
 
-    BitcoinExchange test_default;
-    (void)test_default;
+    try {
+        BitcoinExchange test;
+        (void)test;
 
-    std::cout << "\033[1;31m";
-    std::cout << "\n*******TESTING CONSTRUCTOR*******\n" << std::endl;
-    std::cout << "\033[1;0m";
-
-    BitcoinExchange test(argv[1]);
-    (void)test;
+    } catch (const std::exception& msg){
+        std::cout << msg.what() << std::endl;
+    }
 }
