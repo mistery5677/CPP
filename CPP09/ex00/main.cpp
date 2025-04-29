@@ -15,8 +15,7 @@ int main(int argc, char **argv){
 
     try {
         BitcoinExchange test;
-        (void)test;
-
+        test.readInputFile(argv[1]);
     } catch (const std::exception& msg){
         std::cout << msg.what() << std::endl;
     }

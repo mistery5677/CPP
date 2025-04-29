@@ -13,4 +13,5 @@ class BitcoinExchange {
 
         //UTILS
         void    loadDataBase();
+        void    readInputFile(const std::string fileName);
 };
