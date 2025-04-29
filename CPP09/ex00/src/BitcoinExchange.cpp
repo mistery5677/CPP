@@ -153,88 +153,71 @@ bool    checkDateInfo(int year, int month, int day){
     return true;
 }
 
-bool    checkDate(std::string& date){
+bool checkDate(std::string& date) {
     removeSpace(date);
-
     std::stringstream ss(date);
-
-    // Separates year | Month | day
-    std::string year;
-    std::string month;
-    std::string day;
-
-    // Delimits the information
+    std::string year, month, day;
     std::getline(ss, year, '-');
     std::getline(ss, month, '-');
     std::getline(ss, day, '-');
 
-    if (!isOnlyDigits(year) ||
-        !isOnlyDigits(month) ||
-        !isOnlyDigits(day)){
-            std::cout << "Error: Alphabet dates" << std::endl;
-            return false; 
-        }
-    
-    // Checks date format
-    if (countChar(date, '-') != 2 || year.size() != 4 || month.size() != 2 || day.size() != 2){
+    if (countChar(date, '-') != 2 || year.length() != 4 || month.length() != 2 || day.length() != 2) {
         std::cout << "Error: Incorrect date format YYYY-MM-DD" << std::endl;
         return false;
     }
-
-    // Get the values into int
-    int yearI = atoi(year.c_str());
-    int monthI = atoi(month.c_str());
-    int dayI = atoi(day.c_str());
-
-    if (!checkDateInfo(yearI, monthI, dayI))
+    if (!isOnlyDigits(year) || !isOnlyDigits(month) || !isOnlyDigits(day)) {
+        std::cout << "Error: Alphabet dates" << std::endl;
         return false;
-    
-    return true;
+    }
+
+    int y = std::atoi(year.c_str());
+    int m = std::atoi(month.c_str());
+    int d = std::atoi(day.c_str());
+
+    return checkDateInfo(y, m, d);
 }
 
-bool    checkValue(std::string& value){
+bool checkValue(std::string& value) {
     removeSpace(value);
 
-    float valueF = std::atof(value.c_str());
-    if (valueF > 1000){
+    float val = static_cast<float>(std::atof(value.c_str()));
+    if (val > 1000.0f) {
         std::cout << "Error: Too large number" << std::endl;
         return false;
     }
-    else if (valueF < 0){
+    if (val < 0.0f) {
         std::cout << "Error: Not a positive number" << std::endl;
         return false;
     }
 
-    size_t delimiter = value.find('.');
-    std::string exponent;
-    if (delimiter == std::string::npos)
-        exponent = value;
-    else{
-        exponent = value.substr(0, delimiter);
-        std::string significant = value.substr(delimiter + 1);
-        if (!significant.c_str() || !isOnlyDigits(significant)){
-
+    size_t dot = value.find('.');
+    std::string intPart, fracPart;
+    if (dot != std::string::npos) {
+        intPart = value.substr(0, dot);
+        fracPart = value.substr(dot + 1);
+        if (!isOnlyDigits(fracPart)) {
             std::cout << "Error: Bad value => " << value << std::endl;
             return false;
         }
+    } else {
+        intPart = value;
     }
-    if (!exponent.c_str() || !isOnlyDigits(exponent)){
+
+    if (!isOnlyDigits(intPart)) {
         std::cout << "Error: Bad value => " << value << std::endl;
         return false;
     }
+
     return true;
 }
 
-std::map<std::string, float>::const_iterator targetDate(std::map<std::string, float> db, const std::string& date){
+std::map<std::string, float>::const_iterator targetDate(std::map<std::string, float>& db, const std::string& date) {
     std::map<std::string, float>::const_iterator it = db.upper_bound(date);
-    if (it == db.begin()){
-        it = db.end();
-        return it;
-    }
+    if (it == db.begin())
+        return db.end();
     --it;
     return it;
 }
-
 void    printWallet(std::map<std::string, float> db, const std::string& date, const std::string& value){
     std::map<std::string, float>::const_iterator  dataDB = targetDate(db, date);
 
