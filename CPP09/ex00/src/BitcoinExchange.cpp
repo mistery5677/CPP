@@ -214,7 +214,7 @@ bool checkValue(std::string& value) {
 std::map<std::string, float>::const_iterator targetDate(std::map<std::string, float>& db, const std::string& date) {
     std::map<std::string, float>::const_iterator it = db.upper_bound(date);
     if (it == db.begin())
-        return db.end();
+        return ();
     --it;
     return it;
 }
