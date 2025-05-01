@@ -1,4 +1,4 @@
-NAME = RPN # Subject nam
+NAME = PmergeMe# Subject nam
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
