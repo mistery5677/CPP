@@ -128,10 +128,10 @@ bool    checkDateInfo(int year, int month, int day){
     }
     
     // Checks year
-    if (year < 2009 || (year == 2009 && month == 1 && day == 1)){
-        std::cout << "Error: Bitcoin doesn't exist in " << year << "-" << month << "-" << day << std::endl;
-        return false;
-    }
+    // if (year < 2009 || (year == 2009 && month == 1 && day == 1)){
+    //     std::cout << "Error: Bitcoin doesn't exist in " << year << "-" << month << "-" << day << std::endl;
+    //     return false;
+    // }
     
     // Checks the day and the month
     if (day > 30 && (month == 4 || month == 6 || month == 9 || month == 11)){
@@ -214,13 +214,17 @@ bool checkValue(std::string& value) {
 std::map<std::string, float>::const_iterator targetDate(std::map<std::string, float>& db, const std::string& date) {
     std::map<std::string, float>::const_iterator it = db.upper_bound(date);
     if (it == db.begin())
-        return ();
+        return it;
     --it;
     return it;
 }
 void    printWallet(std::map<std::string, float> db, const std::string& date, const std::string& value){
     std::map<std::string, float>::const_iterator  dataDB = targetDate(db, date);
-
+    
+    if (date.compare(dataDB->first) < 0){
+        std::cerr << "Error: Bitcoin doesn't exist in this date: " << date << std::endl;
+        return ;
+    }
     float valueF = std::atof(value.c_str());
     std::cout << dataDB->first << " => " << valueF << " = " << valueF * dataDB->second << std::endl;
 }
