@@ -2,10 +2,13 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <list>
 
 int main()
 {
-
+    std::cout << "\033[1;32m";
+    std::cout << "\n*******TESTING SUBJECT*******\n" << std::endl;
+    std::cout << "\033[1;0m";
     std::stack<int> origStack;
     origStack.push(5);
     origStack.push(17);
@@ -29,7 +32,6 @@ int main()
     origStack.push(5);
     origStack.push(737);
 
-    //[...]
     mstack.push(0);
     MutantStack<int>::iterator it = mstack.begin();
     MutantStack<int>::iterator ite = mstack.end();    
@@ -53,7 +55,43 @@ int main()
         ++it;
         ++itd;
     }
-    std::stack<int> s(mstack);
+
+	std::cout << "Original start: " << *origDeque.begin() << " | Mine start: " << *mstack.begin() << std::endl;
+	std::cout << "Original end: " << *origDeque.end() << " | Mine end: " << *mstack.end() << std::endl;
+
+	std::cout << "\033[1;32m";
+    std::cout << "\n*******TESTING LIST TYPE*******\n" << std::endl;
+    std::cout << "\033[1;0m";
+	
+	std::list<int> origList;
+    origList.push_back(5);
+    origList.push_back(17);
+
+    /////////////////////
+
+    MutantStack<int> mstack2;
+    mstack2.push(5);
+    mstack2.push(17);
+
+    std::cout << "Mine: " << mstack2.top() << " | Original: " << origList.back() << std::endl;
+
+    mstack2.pop();
+    origList.pop_back();
+    std::cout << "Mine: " << mstack2.size() << " | Original: " << origList.size() << std::endl;
+    mstack2.push(3);
+    mstack2.push(5);
+    mstack2.push(737);
+
+    origList.push_back(3);
+    origList.push_back(5);
+    origList.push_back(737);
+
+    MutantStack<int>::iterator it2 = mstack2.begin();
+    MutantStack<int>::iterator ite2 = mstack2.end();    
+    ++it2;
+    --ite2;
+
+	std::cout << "start: " << *it2 << " end: " << *ite2 << std::endl;
     return 0;
 }
 

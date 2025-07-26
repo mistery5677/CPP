@@ -1,4 +1,4 @@
-#include "include/EasyFind.hpp"
+#include "include/easyfind.hpp"
 #include <iostream>
 #include <vector>
 #include <deque>
@@ -18,7 +18,11 @@ int main(){
     mySet.push_back(0);
     mySet.push_back(10);
     mySet.push_back(5);   
-    std::cout << "Found the value: " << *easyFind(mySet, 10) << std::endl; // We have to put * because the iterator is a pointer
+	try {
+    	std::cout << "Found the value: " << *easyfind(mySet, 6) << std::endl; // We have to put * because the iterator is a pointer
+	} catch (std::exception &e) { 
+        std::cerr << e.what() << std::endl;
+    }
 
     std::cout << "\033[1;31m";
     std::cout << "\n*******TESTING DEQUE*******\n" << std::endl;
@@ -28,8 +32,11 @@ int main(){
     mySet2.push_back(0);
     mySet2.push_back(10);
     mySet2.push_back(5);   
-    std::cout << "Found the value: " << *easyFind(mySet2, 10) << std::endl;
-
+    try {
+		std::cout << "Found the value: " << *easyfind(mySet2, 6) << std::endl;
+	} catch (std::exception &e) { 
+        std::cerr << e.what() << std::endl;
+    }
     std::cout << "\033[1;31m";
     std::cout << "\n*******TESTING SET*******\n" << std::endl;
     std::cout << "\033[1;0m";
@@ -39,7 +46,7 @@ int main(){
     mySet3.insert(10);
     mySet3.insert(5);   
     try {
-        std::cout << "Found the value: " << *easyFind(mySet3, 90) << std::endl;
+        std::cout << "Found the value: " << *easyfind(mySet3, 6) << std::endl;
     } catch (std::exception &e) { 
         std::cerr << e.what() << std::endl;
     }
@@ -52,7 +59,11 @@ int main(){
     mySet4.push_back(0);
     mySet4.push_back(10);
     mySet4.push_back(5);   
-    std::cout << "Found the value: " << *easyFind(mySet4, 10) << std::endl;
+	try {
+    	std::cout << "Found the value: " << *easyfind(mySet4, 6) << std::endl;
+	} catch (std::exception &e) { 
+        std::cerr << e.what() << std::endl;
+    }
 
     std::cout << "\033[1;31m";
     std::cout << "\n*******TESTING MULTISET*******\n" << std::endl;
@@ -61,6 +72,10 @@ int main(){
     std::multiset<int> mySet5;
     mySet5.insert(0);
     mySet5.insert(10);
-    mySet5.insert(5);   
-    std::cout << "Found the value: " << *easyFind(mySet5, 10) << std::endl;
+    mySet5.insert(5);  
+	try {
+	    std::cout << "Found the value: " << *easyfind(mySet5, 6) << std::endl;
+	} catch (std::exception &e) { 
+        std::cerr << e.what() << std::endl;
+    }
 }

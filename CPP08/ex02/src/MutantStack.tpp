@@ -1,6 +1,4 @@
 #pragma once
-// #include "../include/MutantStack.hpp"
-// #include <exeception>
 
 template<typename T>
 MutantStack<T>::MutantStack(){
@@ -14,6 +12,7 @@ MutantStack<T>::MutantStack(const MutantStack& copy){
 template<typename T>
 MutantStack<T>& MutantStack<T>::operator=(const MutantStack& src){
     this->c = src.c;
+	return  *this;
 }
 
 template<typename T>
