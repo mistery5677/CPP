@@ -1,25 +1,6 @@
 #include "include/PmergeMe.hpp"
 #include <iostream>
 
-void DB_PrintVector(std::vector<int> vector)
-{
-	for (size_t i = 0; i < vector.size(); i++)
-	{
-		std::cout << vector[i] << " ";
-	}
-	std::cout << std::endl;
-}
-
-
-void DB_PrintDeque(std::deque<int> deque)
-{
-	for (size_t i = 0; i < deque.size(); i++)
-	{
-		std::cout << deque[i] << " ";
-	}
-	std::cout << std::endl;
-}
-
 /// MAIN ///
 int main(int argc, char** argv)
 {
@@ -29,11 +10,19 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-	PmergeMe pmergeMe(argv);
-	DB_PrintVector(pmergeMe.GetVector());
-	DB_PrintDeque(pmergeMe.GetDeque());
-
+	PmergeMe pmergeMe;
+	pmergeMe.insertNumbers(argc, argv);
 	
+	// Check if we have some bad argument
+	if (pmergeMe.checkDupAndNegative() == true){
+		std::cerr << "Error: You can have a duplicate number or a negative number in the input" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+
+	pmergeMe.printBefore(argc, argv);
+	
+	double vectorTime = pmergeMe.sortVector();
+	double dequeTime = pmergeMe.sortDeque();
 
 	return 0;
 }
