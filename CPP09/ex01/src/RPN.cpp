@@ -25,10 +25,15 @@ Calculator::~Calculator(){
 }
 
 bool isOperand(std::string& str){
-    if (str[0] < '0' || str[0] > '9')
+    int strSize = 0;
+
+    if (str[0] == '-' || str[0] == '+')
+        strSize++;
+
+    if (str[strSize] < '0' || str[strSize] > '9')
         return false;
 
-    if (str[1]) // Checks if the str is finished
+    if (str[strSize + 1]) // Checks if the str is finished
         return false;
     return true;
 }
@@ -46,6 +51,7 @@ bool isOperator(std::string& str){
 bool checkInput(char *argv){
     std::stringstream   ss(argv);
     std::string         value;
+    int                 countArguments = 0;
     while (std::getline(ss, value, ' ')){ // Checks the entire arguments
         if (value.empty()) // If we have more than one space together
             continue ;
@@ -53,6 +59,13 @@ bool checkInput(char *argv){
             std::cerr << "Error: Bad argument: " << value << std::endl;
             return false;
         }
+        countArguments++;
+    }
+
+    // Check the case with only one number
+    if (countArguments == 1){
+        std::cerr << "Error: Only one argument to process: " << value << std::endl;
+        return false;
     }
     return true;
 }
