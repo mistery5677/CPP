@@ -178,23 +178,30 @@ bool checkDate(std::string& date) {
 }
 
 bool checkValue(std::string& value) {
+    size_t dot = value.find('.');
+
     removeSpace(value);
+    if (value[0] == '-') {
+        std::cout << "Error: Not a positive number" << std::endl;
+        return false;
+    }
+
+    if (isOnlyDigits(value) == false && dot == std::string::npos)
+    {
+        std::cout << "Error: Bad value => " << value << std::endl;
+        return false;
+    }
 
     float val = static_cast<float>(std::atof(value.c_str()));
     if (val > 1000.0f) {
         std::cout << "Error: Too large number" << std::endl;
         return false;
     }
-    if (val < 0.0f) {
-        std::cout << "Error: Not a positive number" << std::endl;
-        return false;
-    }
 
-    size_t dot = value.find('.');
     std::string intPart, fracPart;
     if (dot != std::string::npos) {
-        intPart = value.substr(0, dot);
-        fracPart = value.substr(dot + 1);
+        intPart = value.substr(0, dot - 1);
+        fracPart = value.substr(dot);
         if (!isOnlyDigits(fracPart)) {
             std::cout << "Error: Bad value => " << value << std::endl;
             return false;
