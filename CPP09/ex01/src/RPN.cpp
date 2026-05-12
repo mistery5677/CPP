@@ -2,6 +2,7 @@
 #include <stdlib.h> // atoi
 #include <sstream>
 #include <string>
+#include <limits.h>
 
 Calculator::Calculator(){
 }
@@ -33,7 +34,7 @@ bool isOperand(std::string& str){
     if (str[strSize] < '0' || str[strSize] > '9')
         return false;
 
-    if (str[strSize + 1]) // Checks if the str is finished
+    if (str.length() != (size_t)(strSize + 1))
         return false;
     return true;
 }
@@ -78,21 +79,32 @@ bool Calculator::doOperation(char oprt){
 
     int top2 = this->_memory.top();
     this->_memory.pop();
+    double result = 0;
 
-    if (oprt == '+')
-    this->_memory.push(top2 + top1);
-    else if (oprt == '-')
-    this->_memory.push(top2 - top1);
-    else if (oprt == '*')
-    this->_memory.push(top2 * top1);
-    else if (oprt == '/'){
+    if (oprt == '+') {
+        result = static_cast<double>(top2) + static_cast<double>(top1);
+    }
+    else if (oprt == '-') {
+        result = static_cast<double>(top2) - static_cast<double>(top1);
+    }
+    else if (oprt == '*') {
+        result = static_cast<double>(top2) * static_cast<double>(top1);
+    }
+    else if (oprt == '/') {
         if (top1 == 0){
             std::cerr << "Error: Divided by 0" << std::endl;
             return false;
         }
-        else
-            this->_memory.push(top2 / top1);
+        result = static_cast<double>(top2) / static_cast<double>(top1);
     }
+
+    if (result > INT_MAX || result < INT_MIN) {
+        std::cerr << "Error: Integer overflow detected" << std::endl;
+        return false; // Interrompe o processo porque os limites foram excedidos
+    }
+
+    this->_memory.push(static_cast<int>(result));
+
     return true;
 }
 
@@ -118,8 +130,14 @@ void Calculator::calculate(char *argv){
             return ;
         }
     }
+    if (this->_memory.size() == 0)
+    {
+        std::cerr << "No values to calculate" << std::endl;
+        return;
+    }
+
     if (this->_memory.size() > 1)
-        std::cerr << "Error: Missing some operands to finish" << std::endl;
+        std::cerr << "Error: Missing operators" << std::endl;
     else
         std::cout << "Result: " << this->_memory.top() << std::endl;
 }
