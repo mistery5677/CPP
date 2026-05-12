@@ -59,6 +59,10 @@ void BitcoinExchange::loadDataBase(){
         this->_dataBase[date] = std::atof(value.c_str());
     }
     file.close();
+
+    // if (_dataBase.empty()){
+        // throw std::invalid_argument("ERROR: Nothing inside in data base\n");
+    // }
 }
 
 // Counts how many times apear 'ch' in 'str'
@@ -127,12 +131,6 @@ bool    checkDateInfo(int year, int month, int day){
         return false;
     }
     
-    // Checks year
-    // if (year < 2009 || (year == 2009 && month == 1 && day == 1)){
-    //     std::cout << "Error: Bitcoin doesn't exist in " << year << "-" << month << "-" << day << std::endl;
-    //     return false;
-    // }
-    
     // Checks the day and the month
     if (day > 30 && (month == 4 || month == 6 || month == 9 || month == 11)){
         std::cout << "Error: Day doesn't exist on that month." << std::endl;
@@ -140,15 +138,16 @@ bool    checkDateInfo(int year, int month, int day){
     }
 
     // Checks the day in february
-    if (day > 28 && month == 2 && year % 4 != 0){
-        std::cout << "Error: Day doesn't exist on that month." << std::endl;
-        return false;
-    }
+    bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 
-    // Checks the day in february with 29 days
-    if (day > 29 && month == 2 && year % 4 ==0){
-        std::cout << "Error: Day doesn't exist on that month." << std::endl;
-        return false;
+    if (month == 2) {
+        if (isLeapYear && day > 29) {
+            std::cout << "Error: Day doesn't exist on that month." << std::endl;
+            return false;
+        } else if (!isLeapYear && day > 28) {
+            std::cout << "Error: Day doesn't exist on that month." << std::endl;
+            return false;
+        }
     }
     return true;
 }
@@ -161,7 +160,7 @@ bool checkDate(std::string& date) {
     std::getline(ss, month, '-');
     std::getline(ss, day, '-');
 
-    if (countChar(date, '-') != 2 || year.length() != 4 || month.length() != 2 || day.length() != 2) {
+    if (countChar(date, '-') != 2 || year.length() == 0 || month.length() == 0 || day.length() == 0) {
         std::cout << "Error: Incorrect date format YYYY-MM-DD" << std::endl;
         return false;
     }
@@ -228,12 +227,18 @@ std::map<std::string, float>::const_iterator targetDate(std::map<std::string, fl
 void    printWallet(std::map<std::string, float> db, const std::string& date, const std::string& value){
     std::map<std::string, float>::const_iterator  dataDB = targetDate(db, date);
     
+    // Check if we have some information in data base
+    if (db.empty()) {
+        std::cerr << "Error: Database is empty." << std::endl;
+        return;
+    }
+
     if (date.compare(dataDB->first) < 0){
         std::cerr << "Error: Bitcoin doesn't exist in this date: " << date << std::endl;
         return ;
     }
     float valueF = std::atof(value.c_str());
-    std::cout << dataDB->first << " => " << valueF << " = " << valueF * dataDB->second << std::endl;
+    std::cout << date << " => " << valueF << " = " << valueF * dataDB->second << std::endl;
 }
 
 void BitcoinExchange::readInputFile(const std::string fileName){
