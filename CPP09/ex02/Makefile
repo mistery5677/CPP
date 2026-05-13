@@ -1,7 +1,6 @@
-NAME = PmergeMe# Subject nam
+NAME = PmergeMe #Subject nam
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
-
+CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98 -I./include -I.
 SRCS = main.cpp src/PmergeMe.cpp
 OBJS = $(SRCS:.cpp=.o) 
 

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cstdlib>
 
+class PmergeMe;
+
 /// MAIN ///
 int main(int argc, char** argv)
 {
@@ -12,12 +14,15 @@ int main(int argc, char** argv)
 	}
 
 	PmergeMe pmergeMe;
-	pmergeMe.insertNumbers(argc, argv);
+	if (pmergeMe.insertNumbers(argc, argv) == false)
+	{
+		return -1;
+	}
 	
 	// Check if we have some bad argument
 	if (pmergeMe.checkDupAndNegative() == true){
 		std::cerr << "Error: You can not have a duplicate number or a negative number in the input" << std::endl;
-		exit(EXIT_FAILURE);
+		return -1;
 	}
 
 	pmergeMe.printBefore(argc, argv);
@@ -29,9 +34,5 @@ int main(int argc, char** argv)
 	pmergeMe.printTimeToSort(VECTOR, vectorTime, argc - 1);
 	pmergeMe.printTimeToSort(DEQUE, dequeTime, argc - 1);
 
-	// std::cout << "Estamos a imprimir os Containers depois de dar sort" << std::endl;
-	// pmergeMe.PrintContainers();
 	return 0;
 }
-
-// Positive integer sequence as an argument

@@ -53,23 +53,37 @@ Pair& Pair::operator=(const Pair& cpy){
 /// @brief This method will verify and insert all numbers in each container
 /// @param argc Number of arguments
 /// @param argv The value of each argument
-void PmergeMe::insertNumbers(int argc, char **argv){
-
+bool PmergeMe::insertNumbers(int argc, char **argv){
 	// Validate all the numbers in the arguments
 	for (int x = 1; argv[x]; x++){
+		if (argv[x][0] == '\0')
+		{
+			std::cerr << "Error: Empty string in input" << std::endl;
+			return false;
+		}
 		for (int y = 0; argv[x][y]; y++){
 			if (argv[x][y] < '0' || argv[x][y] >'9'){
 				std::cerr << "Error: FOUND AN INVALID NUMBER" << std::endl;
-				exit(EXIT_FAILURE);
+				return false;
 			}
 		}
 	}
 
+	char* vectorEnd;
+	char* dequeEnd;
+
 	// Pass all the numbers to each container
 	for (int x = 1; x < argc; x++){
-		_vector.push_back(atoi(argv[x]));
-		_deque.push_back(atoi(argv[x]));
+		_vector.push_back(std::strtol(argv[x], &vectorEnd, 10));
+		_deque.push_back(std::strtol(argv[x], &dequeEnd, 10));
 	}
+
+	if (_vector.size() == 1)
+	{
+		std::cerr << "Error: Only one member, its useless to sort" << std::endl;
+		return false;
+	}
+	return true;
 }
 
 /// @brief Check if we have any negative or dup number
@@ -118,22 +132,43 @@ void PmergeMe::printTimeToSort(int type, double time, size_t ctrSize){
 	}
 }
 
+// Helper function to merge numbers
 template <typename Container>
-void sortPairsByBig(Container &pairs){
-	for (size_t i = 1; i < pairs.size(); i++){
-		Pair key = pairs[i];
-		size_t j = i;
+void mergePairs(Container &pairs, size_t left, size_t mid, size_t right) {
+    Container temp;
+    size_t i = left;
+    size_t j = mid + 1;
 
-		while(j > 0 && pairs[j - 1].big > key.big){
-			pairs[j] = pairs[j - 1];
-			j--;
-		}
-		pairs[j] = key;
-	}
+    while (i <= mid && j <= right) {
+        if (pairs[i].big <= pairs[j].big) {
+            temp.push_back(pairs[i++]);
+        } else {
+            temp.push_back(pairs[j++]);
+        }
+    }
+
+    while (i <= mid) temp.push_back(pairs[i++]);
+    while (j <= right) temp.push_back(pairs[j++]);
+
+    for (size_t k = 0; k < temp.size(); k++) {
+        pairs[left + k] = temp[k];
+    }
+}
+
+// Recursive sorting
+template <typename Container>
+void recursiveSortPairs(Container &pairs, size_t left, size_t right) {
+    if (left >= right) return;
+
+    size_t mid = left + (right - left) / 2;
+
+    recursiveSortPairs(pairs, left, mid);
+    recursiveSortPairs(pairs, mid + 1, right);
+    mergePairs(pairs, left, mid, right);
 }
 
 template <typename Container>
-size_t findBigPos(const Container &chain, int big)
+size_t findBigPos(const Container &chain, long big)
 {
     for (size_t i = 0; i < chain.size(); i++)
     {
@@ -144,7 +179,7 @@ size_t findBigPos(const Container &chain, int big)
 }
 
 template <typename Container>
-void binaryInsert(Container &chain, int value, size_t maxPos) {
+void binaryInsert(Container &chain, long value, size_t maxPos) {
     size_t left = 0;
     size_t right = maxPos;
 
@@ -175,20 +210,21 @@ void sortPairsBySmall(PairContainer &pairs, ChainContainer &mainChain)
         curr = curr + 2 * prev;
     }
 
-    for (size_t i = 0; i < insertionOrder.size(); i++)
+for (size_t i = 0; i < insertionOrder.size(); i++)
     {
         size_t idx = insertionOrder[i];
-        size_t maxPos = findBigPos(mainChain, pairs[idx].big);
+        typename ChainContainer::iterator it = std::find(mainChain.begin(), mainChain.end(), pairs[idx].big);
+        size_t maxPos = std::distance(mainChain.begin(), it);
         binaryInsert(mainChain, pairs[idx].small, maxPos);
     }
 }
 
 
 /// @brief Sorts the vector
-void orderVector(std::vector<int> &vectorToSort){
+void orderVector(std::vector<long> &vectorToSort){
 	std::vector<Pair> pairs;
 	bool isOdd = false;
-	int extraNumber;
+	long extraNumber;
 	
 	for (size_t i = 0; i + 1 < vectorToSort.size(); i += 2){
 		Pair currentPair;
@@ -209,10 +245,12 @@ void orderVector(std::vector<int> &vectorToSort){
 	}
 
 	// Sort pairs by big numbers
-	sortPairsByBig(pairs);
+	if (pairs.size() > 1) {
+		recursiveSortPairs(pairs, 0, pairs.size() - 1);
+	}
 
 	// Create the main chain
-	std::vector<int> mainChain;
+	std::vector<long> mainChain;
 	for (size_t i = 0; i < pairs.size(); i++)
 		mainChain.push_back(pairs[i].big);
 
@@ -228,7 +266,7 @@ void orderVector(std::vector<int> &vectorToSort){
 }
 
 /// @brief Sorts the vector
-void orderDeque(std::deque<int> &vectorToSort){
+void orderDeque(std::deque<long> &vectorToSort){
 	std::deque<Pair> pairs;
 	bool isOdd = false;
 	int extraNumber;
@@ -252,10 +290,12 @@ void orderDeque(std::deque<int> &vectorToSort){
 	}
 
 	// Sort pairs by big numbers
-	sortPairsByBig(pairs);
+	if (pairs.size() > 1) {
+    	recursiveSortPairs(pairs, 0, pairs.size() - 1);
+	}
 
 	// Create the main chain
-	std::deque<int> mainChain;
+	std::deque<long> mainChain;
 	for (size_t i = 0; i < pairs.size(); i++)
 		mainChain.push_back(pairs[i].big);
 
@@ -297,18 +337,3 @@ double PmergeMe::sortDeque(){
     
     return diff_in_us;
 }
-
-/// @brief Debug to print the containers
-void PmergeMe::PrintContainers(){
-	std::cout << "Printing Vector: ";
-	for (std::vector<int>::iterator i = _vector.begin(); i != _vector.end(); i++){
-		std::cout << *i << " ";
-	}
-
-	std::cout << "\nPrinting Deque: ";
-
-	for (std::deque<int>::iterator i = _deque.begin(); i != _deque.end(); i++){
-		std::cout << *i << " ";
-	}
-}
-

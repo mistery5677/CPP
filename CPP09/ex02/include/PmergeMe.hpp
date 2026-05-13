@@ -8,15 +8,15 @@
 
 class PmergeMe{
     private:
-        std::deque<int>     _deque;
-        std::vector<int>    _vector;
+        std::deque<long>     _deque;
+        std::vector<long>    _vector;
     public:
         PmergeMe();									// Default constructor
         PmergeMe(const PmergeMe& cpy);				// Copy constructor
         PmergeMe& operator=(const PmergeMe& cpy);	// Overloading operator
         ~PmergeMe();								// Default desconstructor
 
-		void insertNumbers(int argc, char **argv); 	// Insert the numbers in each container
+		bool insertNumbers(int argc, char **argv); 	// Insert the numbers in each container
 		bool checkDupAndNegative();					// Check if we found a negative or a duplicated number
 		double sortVector();						// Sort the vector container and return the time wasted;
 		double sortDeque();							// Sort the deque container and return the time wasted;
@@ -24,7 +24,6 @@ class PmergeMe{
         void printBefore(int argc, char **argv);
         void printAfter();
         void printTimeToSort(int type, double time, size_t ctrSize);
-        void PrintContainers();
 };
 
 class Pair{
@@ -36,6 +35,6 @@ class Pair{
         ~Pair();							// Default desconstructor
 
         // Values
-        int small;
-        int big;
+		long small;
+        long big;
 };
