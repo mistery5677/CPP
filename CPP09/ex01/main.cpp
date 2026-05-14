@@ -4,7 +4,7 @@ int main(int argc, char **argv){
     // Checks the input
     if (argc != 2){
         std::cerr << "Error: Invalid argument number" << std::endl;
-        return false;
+        return -1;
     }
     Calculator calculator;
 
